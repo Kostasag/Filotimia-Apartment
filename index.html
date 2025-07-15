@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <title>Filotimia Schoinousa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* ===== GENERAL RESET & BASIC STYLES ===== */
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fdf5e6;
+  overflow-x: hidden;
+}
+body { min-height: 100vh; }
+
+/* ===== NAVBAR STYLES ===== */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  position: fixed;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  color: rgb(255, 255, 255);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: transform 0.5s ease;
+  padding-left: 30px;
+  /* ===== BLURR EFFECT NAV BAR */
+  background-color: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(4px); 
+  -webkit-backdrop-filter: blur(4px); 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  /* ===== backdrop filter 400px κανει κανονικο background border- 4px normal */
+}
+
+.navbar a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  transition: color 0.3s ease;
+  padding: 10px;
+  font-weight: 500;
+}
+
+.navbar a:hover { color: #00b9da; }
+
+.nav-left, .nav-right { 
+  display: flex; 
+  gap: 20px;
+}
+
+.navbar-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  transform: translateX(30px); /* Μετακίνηση δεξιά */
+}
+
+.nav-center img {
+  height: 60px;
+  width: 60px;
+  border-radius: 12px;
+  margin-top: 9px; /* προσθέτει περιθώριο πάνω */
+  transform: none; /* ακύρωση του translateY */
+}
+
+
+/* ===== HERO SECTION STYLES ===== */
+.hero {
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1.5s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  
+}
+
+/* ===== WELCOME TEXT ===== */
+#welcome-text {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-align: center;
+  z-index: 5;
+}
+
+#welcome-text h1 {
+  font-style: italic;
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  animation: popUp 1.5s ease-out forwards;
+}
+
+#welcome-text hr {
+  width: 200px;
+  border: none;
+  border-top: 2px solid white;
+  margin: 15px auto;
+  opacity: 0.4;
+}
+
+#welcome-text p {
+  font-size: 1.2rem;
+  margin-top: 0;
+  color: white;
+  animation: popUp 1.5s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes popUp {
+  0% { transform: translateY(-50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ===== BOOKING BOX ===== */
+/* ===== FIXED BOOKING BOX ===== */
+#book-box {
+  position: absolute;
+  bottom: 100px;
+  left: 51%; /* corrected to exactly center it */
+  transform: translateX(-50%) translateY(50px); /* Initial Y-position slightly downwards */
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  padding: 15px 20px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  opacity: 0; /* Initial opacity 0 for smoother appearance */
+  animation: popUpBookBox 1.5s ease-out forwards;
+  animation-delay: 0.4s;
+}
+
+@keyframes popUpBookBox {
+  0% { transform: translateX(-50%) translateY(50px); opacity: 0; }
+  100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+
+#book-box form {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#book-box input,
+#book-box select {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  min-width: 150px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #222;
+}
+
+#book-box button {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#book-box button:hover { background-color: #333; }
+
+.book-now-link {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.book-now-link:hover {
+  background-color: #333;
+}
+
+/* ===== SCHOINOUSA SECTION STYLES ===== */
+.schoinousa-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  background-color: #fdf5e6;
+  color: #2c3e50;
+  opacity: 0;
+  transform: translateY(-60px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.schoinousa-section.show-section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.schoinousa-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  gap: 40px;
+  align-items: center;
+}
+
+.schoinousa-image img {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+.schoinousa-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.schoinousa-text h2 { font-size: 2rem; margin-bottom: 15px; }
+
+.schoinousa-text p { font-size: 1.1rem; line-height: 1.6; opacity: 0.9; }
+
+
+/* line seperator1 */
+
+.angled-separator {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.angled-separator svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.page-separator.flipped svg {
+  transform: rotate(180deg);
+}
+
+
+/* ===== WAVE SEPARATOR (NORMAL & FLIPPED) ===== */
+
+.wave-separator {
+  position: relative;
+  height: 100px;
+  overflow: hidden;
+  background-color: #111;
+}
+
+.wave-separator svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.wave-separator path {
+  fill: #fdf5e6; /* ίδιο χρώμα με το section που ακολουθεί */
+  animation: waveAnim 6s ease-in-out infinite;
+}
+
+.wave-separator.flipped svg {
+  transform: rotate(180deg);
+}
+
+@keyframes waveAnim {
+  0% { d: path("M0,0 C300,100 900,0 1200,100 L1200,0 L0,0 Z"); }
+  50% { d: path("M0,0 C200,80 1000,20 1200,100 L1200,0 L0,0 Z"); }
+  100% { d: path("M0,0 C300,100 900,0 1200,100 L1200,0 L0,0 Z"); }
+}
+
+
+
+/* ===== CONTENT SECTION (OUTDOOR AREA) STYLES ===== */
+.content-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 5%; /* Reduced vertical padding for less spacing */
+  background-color: #fdf5e6;
+  gap: 15px; /* Further reduced gap between elements */
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+
+.content-section.from-left { transform: translateX(-50px); }
+
+.content-section.show-section {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.content-section img {
+  width: 35%;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(102, 96, 96, 0.2);
+}
+
+.content-text { width: 55%; }
+
+.content-text h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.content-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #2c3e50;
+}
+
+.content-section:nth-child(even) { flex-direction: row-reverse; }
+
+
+/* ===== FOOTER STYLES ===== */
+.new-footer {
+  background-color: #fdf5e6;
+  padding: 60px 20px 30px;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 40px;
+  align-items: flex-start;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ccc;
+}
+
+.footer-brand img {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.footer-brand h3 {
+  font-size: 1.4rem;
+  margin: 0;
+  color: #333;
+}
+
+.footer-links h4 {
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #222;
+}
+
+.footer-links a {
+  display: block;
+  color: #555;
+  font-size: 0.95rem;
+  text-decoration: none;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #00b9da;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+
+/* === Minimal Navbar Links with Vibrant Rounded Hover Effect === */
+
+.navbar a {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 18px;
+  overflow: hidden;
+  border-radius: 50px; /* Rounded edges */
+  transition: all 0.4s ease;
+}
+
+.navbar a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(0, 185, 218, 0.6), rgba(0, 185, 218, 0.2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: -1;
+  border-radius: 50px;
+}
+
+.navbar a:hover::before {
+  transform: scaleX(1);
+}
+
+.navbar a:hover {
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0,185,218,0.7);
+}
+
+/* Optional subtle outline when not hovered (minimal yet intuitive) */
+.navbar a:not(:hover) {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* =====  VIDEO SECTION STYLES ===== */
+.video-section {
+  background-color: #fdf5e6;
+  padding: 40px 10%;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+.video-section.show-section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.video-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.video-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: #00b9da;
+  margin: 10px auto 0;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(180, 140, 90, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+
+/*Full screen video if not we remove this  */
+.video-background-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.video-background-section .video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.25); /* ελαφριά σκίαση πάνω από το βίντεο */
+  z-index: 1;
+}
+
+.video-iframe-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  pointer-events: none; /* Δεν μπορεί ο χρήστης να κλικάρει */
+}
+
+.video-iframe-wrapper iframe {
+  width: 100vw;
+  height: 56.25vw; /* 16:9 */
+  min-height: 100vh;
+  min-width: 177.77vh; /* 16:9 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+}
+
+
+#scrollToTopBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 185, 218, 0.6);
+  background: linear-gradient(145deg, #00d2f7, #00a1c7);
+}
+
+/*Dark Mode */
+#darkModeToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  background: linear-gradient(120deg, #333, #666);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#darkModeToggle:hover {
+  transform: scale(1.1);
+}
+/*ligth Mode */
+body.light-mode {
+  background-color: #f0f0f0;
+  color: #111;
+}
+
+body.light-mode .navbar,
+body.light-mode footer,
+body.light-mode .content-section,
+body.light-mode .video-section,
+body.light-mode .schoinousa-section {
+  background-color: #fff;
+  color: #111;
+}
+
+body.light-mode .navbar a {
+  color: #111;
+}
+
+body.light-mode .navbar a:hover {
+  color: #00b9da;
+}
+
+body.light-mode #book-box {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .content-text p,
+body.light-mode .content-text h2 {
+  color: #222;
+}
+
+body.light-mode .footer-bottom {
+  color: #555;
+}
+
+/* ===== amenities-section ===== */
+.amenities-section {
+  background-color: #3e5042;
+  color: #f5f5f5;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.amenities-header {
+  margin-bottom: 60px;
+}
+
+.amenities-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.section-divider {
+  width: 80px;
+  height: 3px;
+  background: #f5efe4;
+  margin: 0 auto;
+  border-radius: 3px;
+}
+
+.amenities-grid.three-by-two {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.amenity-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.icon-circle {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background-color: #f5efe4;
+  color: #2e3e30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icon-circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.45);
+}
+
+.amenity-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 220px;
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+
+/* reviews-section */
+.reviews-section {
+  padding: 90px 20px;
+  background-color: #2c2c2c;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.reviews-title {
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  font-weight: 600;
+}
+
+.reviews-marquee {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.reviews-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-loop 40s linear infinite;
+}
+
+.review-card {
+  background-color: #1c1c1c;
+  border-radius: 16px;
+  padding: 25px 20px;
+  margin-right: 30px;
+  min-width: 260px;
+  max-width: 280px;
+  box-shadow: 0 6px 20px rgba(0,185,218,0.08);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+}
+
+.review-score {
+  background-color: #00b9da;
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 0 auto 15px;
+}
+
+.review-card p {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #ddd;
+}
+
+.review-card span {
+  display: block;
+  margin-top: 10px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.booking-btn {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 12px 25px;
+  background-color: #00b9da;
+  color: #000;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.booking-btn:hover {
+  background-color: #00d8ff;
+  color: #000;
+}
+
+.booking-btn i {
+  margin-right: 8px;
+}
+
+@keyframes scroll-loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* ===== RESPONSIVE DESIGN STYLES ===== */
+
+/* Mobile and Tablets */
+@media (max-width: 768px) {
+  
+  /* Navbar responsive */
+  .navbar {
+    gap: 15px;
+    font-size: 0.8rem;
+    top: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .nav-center img {
+    height: 45px;
+    margin-bottom: 10px;
+  }
+
+  /* Welcome text responsive */
+  #welcome-text {
+    top: 8%;
+    width: 90%;
+  }
+
+  #welcome-text h1 {
+    font-size: 2rem;
+  }
+
+  #welcome-text p {
+    font-size: 1rem;
+  }
+
+  /* Book box responsive */
+  #book-box {
+    bottom: 20px;
+    left: 50%;
+    width: 90%;
+    transform: translateX(-50%);
+    padding: 10px;
+  }
+
+  #book-box form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #book-box input,
+  #book-box select,
+  #book-box button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  /* Schoinousa section responsive */
+  .schoinousa-container {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .schoinousa-image img {
+    max-width: 100%;
+  }
+
+  /* Content sections responsive */
+  .content-section {
+    flex-direction: column;
+    padding: 20px 5%;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .content-section img,
+  .content-text {
+    width: 100%;
+  }
+
+  /* Footer responsive */
+  .footer-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  footer {
+    padding: 30px 10px 10px;
+  }
+}
+
+/* Larger tablets and smaller laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar {
+    gap: 25px;
+    top: 20px;
+  }
+
+  #book-box {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .schoinousa-container {
+    gap: 20px;
+  }
+
+  .content-section {
+    padding: 15px 7%;
+    gap: 20px;
+  }
+}
+
+/*Scrroll to top button */
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+  background: linear-gradient(145deg, #00b9da, #00a1c7);
+  color: rgb(27, 25, 25);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 185, 218, 0.4);
+  transition: all 0.3s ease;
+  display: none;
+}
+
+/*Greek/English Button */
+.lang-switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.4); /* Σκούρο ημιδιαφανές */
+  border-radius: 30px;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.lang-switch img {
+  width: 26px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lang-switch img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 6px rgba(0, 185, 218, 0.4);
+}
+
+.lang-divider {
+  font-size: 20px;
+  color: #ccc;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+  </style>
+</head>
+<body>
+  
+<!-- DARK MODE TOGGLE -->
+<!--<button id="darkModeToggle" title="Dark/Light Mode">🌓</button>-->
+<!-- Language Toggle 
+<div class="lang-switch">
+  <img src="images/gr-flag.png" alt="Greek" id="grBtn" />
+  <img src="images/uk-flag.png" alt="English" id="enBtn" />
+</div>-->
+
+
+<!-- Nav Bar -->
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="about us.html">About Us</a>
+      <a href="rooms.html">Rooms</a>
+    </div>
+    <div class="nav-center">
+      <img src="images/img17.jpg" alt="Filotimia Logo" />
+    </div>
+    <div class="nav-right">
+      <a href="connections.html">Connections</a>
+      <a href="#Booking">Booking</a>
+      <a href="contact us.html">Contact Us</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- Language Toggle| -->
+<div class="lang-switch">
+  <img src="images/gr-flag.png" alt="Greek" title="Ελληνικά">
+  <span class="lang-divider">|</span>
+  <img src="images/uk-flag.png" alt="English" title="English">
+</div>
+
+
+<!-- HERO SECTION (fade background) -->
+<section class="hero" id="hero">
+  <!-- Welcome Text -->
+  <div id="welcome-text">
+    <h1 style="padding-top: 70px;">Καλώς ήρθατε στη Φιλοτιμία</h1>
+    <hr />
+    <p><b>Απολαύστε την απόλυτη ηρεμία των Κυκλάδων στα πέτρινα δωμάτια μας στη Σχοινούσα.</b></p>
+  </div>
+
+ <!-- Book Now -->
+  <div id="book-box">
+    <form action="mailto:info@filotimia.gr" method="post" enctype="text/plain">
+      <input type="date" name="checkin" required />
+      <input type="date" name="checkout" required />
+      <select name="guests" required>
+        <option value="">Φιλοξενούμενοι</option>
+        <option value="1">1 Επισκέπτης</option>
+        <option value="2">2 Επισκέπτες</option>
+        <option value="3">2 Ενήλικες + 1 Παιδί</option>
+        <option value="4">3 Ενήλικες</option>
+        <option value="5">Οικογένεια (4 άτομα)</option>
+      </select>
+      <a href="https://direct-book.com/properties/filotimia?" target="_blank" rel="noopener noreferrer" class="book-now-link">ΚΡΑΤΗΣΗ ΤΩΡΑ</a>
+    </form>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section class="video-background-section">
+  <div class="video-overlay"></div>
+  <div class="video-iframe-wrapper">
+  <iframe
+  src="https://www.youtube.com/embed/Ad1Q0uuwct8?autoplay=1&mute=1&loop=1&controls=0&playlist=Ad1Q0uuwct8&modestbranding=1"
+  frameborder="0"
+  allow="autoplay; fullscreen"
+  allowfullscreen
+  width="560"
+  height="315"
+></iframe>
+  </div>
+</section>
+
+<!-- Flipped separator -->
+<div class="wave-separator flipped">
+  <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+    <path d="M0,0 C300,100 900,0 1200,100 L1200,0 L0,0 Z"></path>
+  </svg>
+</div>
+
+<!-- SCHOINOUSA SECTION -->
+<section class="schoinousa-section">
+  <div class="schoinousa-container">
+    <div class="schoinousa-image">
+      <img src="https://webbox.imgix.net/images/emqjpecjwvcennsd/be8a8d78-59b5-4966-b190-5588afb75ccf.png" alt="Schoinousa" />
+    </div>
+    <div class="schoinousa-text">
+      <h2>Ανακαλύπτοντας τη Σχοινούσα: Ένας Ήσυχος Παράδεισος στις Μικρές Κυκλάδες</h2>
+      <p>
+        Η Σχοινούσα είναι ένα γραφικό νησί και βρίσκεται περίπου στο κέντρο των Μικρών Κυκλάδων, 
+        νότια της Νάξου και βορειανατολικά της Ηρακλειάς. Είναι ένα μικρό νησί, με λίγους κατοίκους 
+        (200) και έκταση 8,144 τ. Χλμ. που προσφέρεται για ήσυχες διακοπές. 
+      </p>
+      <p>
+        Η Σχοινούσα είναι το πιο άνυδρο μέρος της Ελλάδος, για λίγο δε χαρακτηρίζεται έρημος. 
+        Όμως τα διάφανα γαλαζοπράσινα νερά της, οι χρυσές παραλίες, τα άγρια τοπία και η απόκοσμη ηρεμία 
+        δημιουργούν μια μαγική ατμόσφαιρα για ξεκούραστες διακοπές.
+      </p>
+    </div>
+  </div>
+  </section>
+
+  <!-- Flipped separator -->
+<div class="wave-separator svg">
+  <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+    <path d="M0,0 C300,100 900,0 1200,100 L1200,0 L0,0 Z"></path>
+  </svg>
+</div>
+
+  <!-- amenities-section -->
+
+<section class="amenities-section">
+  <div class="amenities-header">
+    <h3 class="amenities-title">Παροχές & Ανέσεις</h3>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="amenities-grid three-by-two">
+    <div class="amenity-item">
+      <div class="icon-circle"><i class="fas fa-shuttle-van"></i></div>
+      <p>Δωρεάν μεταφορά από/προς το λιμάνι</p>
+    </div>
+    <div class="amenity-item">
+      <div class="icon-circle"><i class="fas fa-broom"></i></div>
+      <p>Καθημερινή υπηρεσία καθαρισμού</p>
+    </div>
+    <div class="amenity-item">
+      <div class="icon-circle"><i class="fas fa-volume-mute"></i></div>
+      <p>Ηχομονωμένα διαμερίσματα</p>
+    </div>
+    <div class="amenity-item">
+      <div class="icon-circle"><i class="fas fa-parking"></i></div>
+      <p>Δωρεάν Parking</p>
+    </div>
+    <div class="amenity-item">
+      <div class="icon-circle"><i class="fas fa-leaf"></i></div>
+      <p>Κήπος με βότανα & λουλούδια</p>
+    </div>
+    <div class="amenity-item">
+      <div class="icon-circle"><i class="fas fa-charging-station"></i></div>
+      <p>Σταθμός φόρτισης ηλεκτρικών</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Outdoor Rooms SECTION -->
+<section class="content-section from-right">
+  <img src="images/img33.jpg" alt="Περιβάλλων Χώρος" style="
+   display: block;
+   width: 60%;
+   max-width: 600px;
+   margin: 60px auto;
+   border-radius: 16px;
+   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+   transform: perspective(800px) scale(1.2) rotateX(-10deg) rotateY(10deg);
+   transition: transform 0.5s ease, box-shadow 0.5s ease;"
+
+  onmouseover="this.style.transform='perspective(800px) scale(1.28) rotateX(0deg) rotateY(0deg)';
+             this.style.boxShadow='0 35px 70px rgba(0, 0, 0, 0.45)'"
+  onmouseout="this.style.transform='perspective(800px) scale(1.22) rotateX(0deg) rotateY(0deg)';
+            this.style.boxShadow='0 22px 45px rgba(0, 0, 0, 0.33)'"
+
+>
+
+  <div class="content-text">
+    <h2>Περιβάλλων Χώρος</h2>
+    <p>
+      Ο εξωτερικός χώρος σχεδιάστηκε με βάση την αρχή της απλότητας και της φυσικότητας. Στόχος μας ήταν να δώσουμε την αίσθηση πως το περιβάλλον αποτελεί φυσική συνέχεια του τοπίου, χωρίς τίποτα περιττό.
+    </p>
+    <p>
+      Κάθε δωμάτιο έχει το όνομα ενός ελληνικού βοτάνου, χαραγμένο σε ξύλο: Βασιλικός, Αμπαρόριζα, Μέντα, Δυόσμος, Λάβδανο, Θρούμπι, Θυμάρι, Ρίγανη, Μαντζουράνα, Δεντρολίβανο, Λεβάντα, Φασκόμηλο.
+    </p>
+    <p>
+      Έξω από κάθε δωμάτιο φυτέψαμε το αντίστοιχο φυτό, ώστε τα αρώματα και τα χρώματα να συνδέονται με το όνομα και την αισθητική του χώρου. Εκτός από τα βότανα, θα δείτε και ελιές, αμπέλια, συκιές, αναρριχώμενες τριανταφυλλιές, μπουκαμβίλιες, αγιόκλημα, γιασεμί, γαρύφαλλα και πολλά ακόμα – συνολικά πάνω από 30 είδη φυτών.
+    </p>
+    <p>
+      Μπροστά από τα δωμάτια απλώνεται ένα παρτέρι μήκους περίπου 60 μέτρων, φυτεμένο με βούρλα και λουλούδια. Εκτός από αισθητική, εξυπηρετεί και πρακτικά: φιλτράρει το νερό από μπάνιο και κουζίνα για επαναχρησιμοποίηση — κάτι πολύτιμο στη Σχοινούσα.
+    </p>
+    <p>
+      Ο συνδυασμός τσιμέντου, πέτρας, ξύλου και λουλουδιών φιλοδοξεί να αποτελέσει ένα «παράθυρο» προς έναν πιο απλό, φυσικό τρόπο ζωής – μια Λιτή Πολυτέλεια.
+    </p>
+  </div>
+</section>
+
+<!-- Indoor Rooms SECTION -->
+<section class="content-section from-left">
+  <img src="images/img40.jpg" alt="Εσωτερικός Χώρος" style="
+       display: block;
+       width: 60%;
+       max-width: 600px;
+       margin: 60px auto;
+       border-radius: 16px;
+       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+       transform: perspective(800px) scale(1.2) rotateX(10deg) rotateY(-10deg);
+       transition: transform 0.5s ease, box-shadow 0.5s ease;
+     "
+     onmouseover="this.style.transform='perspective(800px) scale(1.25) rotateX(5deg) rotateY(-15deg)';
+                  this.style.boxShadow='0 30px 60px rgba(0, 0, 0, 0.4)'"
+     onmouseout="this.style.transform='perspective(800px) scale(1.2) rotateX(5deg) rotateY(-15deg)';
+                 this.style.boxShadow='0 20px 40px rgba(0, 0, 0, 0.3)'"
+
+                 >
+  <div class="content-text">
+    <h2>Εσωτερικός Χώρος</h2>
+    <p>
+      Τα δωμάτια σχεδιάστηκαν με συνδυασμό απλότητας και διακριτικής πολυτέλειας. Διαθέτουν υπέρδιπλα κρεβάτια με στρώματα εξαιρετικής ποιότητας.
+    </p>
+    <p>
+      Οι τοίχοι είναι πέτρινοι, με λευκό σοβά, ενώ ο φωτισμός είναι κρυφός, υπό ανάκλαση και ρυθμιζόμενος για ατμόσφαιρα.
+    </p>
+    <p>
+      Όλα τα δωμάτια περιλαμβάνουν: τηλεόραση, Wi-Fi, ψυγείο με καταψύκτη, τοστιέρα, μηχανή Nespresso, ηλεκτρικό σίδερο, κουζίνα, τραπέζι φαγητού, καρέκλες, ντουλάπα, κλιματισμό και ζεστό νερό.
+    </p>
+    <p>
+      Στην οροφή υπάρχουν δύο ανοίγματα: την ημέρα απομακρύνουν τη ζέστη, ενώ τη νύχτα διοχετεύουν δροσερό θαλασσινό αέρα – για φυσική δροσιά χωρίς μηχανικά μέσα.
+    </p>
+    <p>
+      Το ευρύχωρο μπαλκόνι διαθέτει τραπέζι, πολυθρόνες, ατομική αιώρα, ανεμπόδιστη θέα και απόλυτη ιδιωτικότητα.
+    </p>
+    <p>
+      Τα υλικά είναι φυσικά και οικολογικά: πέτρα, τσιμέντο, ξύλο, γυαλί. Το μπάνιο έχει κατασκευαστεί από Ηρακλείτη – ένα οικολογικό και ανακυκλώσιμο υλικό.
+    </p>
+  </div>
+</section>
+
+
+<!-- === REVIEWS SECTION === -->
+<section class="reviews-section">
+  <h3 class="reviews-title">Κριτικές Επισκεπτών</h3>
+
+  <div class="reviews-marquee">
+    <div class="reviews-track">
+      <div class="review-card">
+        <div class="review-score">10</div>
+        <p>"Όλα τέλεια, πολύ προσεγμένα και άνετα δωμάτια, φιλόξενοι ιδιοκτήτες, τέλεια τοποθεσία για ξεκούραση..."</p>
+        <span>– Nikos ch.</span>
+      </div>
+      <div class="review-card">
+        <div class="review-score">10</div>
+        <p>"Άνεση και διακόσμηση στούντιο 👍Η πρωτοτυπία των κήπων FILOTIMIA έγκειται στην ποικιλία αρωματικών φυτών από τις μικρές Κυκλάδες👏"</p>
+        <span>– Paula Pt.</span>
+      </div>
+      <div class="review-card">
+        <div class="review-score">10</div>
+        <p>"Θέα, υγιεινή, πολυτελής εμφάνιση. Φιλικό προσωπικό, εξυπηρέτηση."</p>
+        <span>– Marcel N.</span>
+      </div>
+      <div class="review-card">
+        <div class="review-score">10</div>
+        <p>"Ένα από τα καλύτερα pet friendly καταλύματα στις Κυκλάδες, υπερπλήρως εξοπλισμένο. Πολύ βοηθητικό προσωπικό, για οτιδήποτε χρειαστήκαμε, με πληροφορίες και συμβουλές για το νησί της Σχοινούσας. Ολοκαίνουριο συγκρότημα, με καταπληκτική επιλογή υλικών μέχρι την τελευταία λεπτομέρεια και άπλετο εξωτερικό χώρο, φροντισμένο με ενδημικά φυτά και εξαιρετικό φωτισμό."</p>
+        <span>– George g.</span>
+      </div>
+      <div class="review-card">
+        <div class="review-score">10</div>
+        <p>"Χωρίς αμφιβολία το πιο όμορφο κατάλυμα που έχει κρατηθεί μέσω Booking.com. Πραγματικά υπέροχο από άποψη κατασκευής, θέας, τοποθεσίας ή εσωτερικού σχεδιασμού Μας παρέλαβαν από το λιμάνι, όπου μας επέστρεψαν και για να πάρουμε το σκάφος μας. Μια απίστευτη διαμονή σε ένα πολύ όμορφο νησί"</p>
+        <span>– Thomas f.</span>
+      </div>
+      <!-- Duplicate for seamless loop -->
+      <div class="review-card">
+        <div class="review-score">9.9</div>
+        <p>"Τα πάντα. Απλά όλα ΤΕΛΕΙΑ. Φανταστικό και εξυπηρετικό προσωπικό, νέα κατασκευή με πολυτελή φινιρίσματα και σε μια εξαιρετικά ήσυχη περιοχή. Πολύ άνετα κρεβάτια."</p>
+        <span>– Siegfried i.</span>
+      </div>
+      <div class="review-card">
+        <div class="review-score">10</div>
+        <p>"Πολύ όμορφα στούντιο με όλες τις ανέσεις για μια ολοκληρωμένη και άνετη διαμονή. Οι ιδιοκτήτες πολύ φιλικοί και συνάμα πολύ διακριτικοί νοιάζονται για την ποιότητα της διαμονής των φιλοξενούμενων επισκεπτών τους.Θα επιστρέψουμε με χαρά στην υπέροχη φιλοτιμία. Σας Ευχαριστούμε πολύ."</p>
+        <span>– Eυαγγελος.</span>
+      </div>
+      <div class="review-card">
+        <div class="review-score">10</div>
+        <p>"Μας άρεσαν τα πάντα. Η φιλοξενία, η ησυχία και το κυκλαδίτικο στυλ. Θα επιστρέψουμε σίγουρα."</p>
+        <span>– Κατερίνα Μ.</span>
+      </div>
+      <div class="review-card">
+        <div class="review-score">10</div>
+        <p>"Η θέα ήταν καταπληκτική"</p>
+        <span>– ANDRONIKI.</span>
+      </div>
+      <div class="review-card">
+        <div class="review-score">10</div>
+        <p>"Εξαιρετικά δωμάτια .. πεντακάθαρο .. προσωπικό άριστο .. ιδανικό για όσους επισκέπτονται τη Σχοινούσα !!! Καλή συνέχεια παιδιά !"</p>
+        <span>– Stylianos.</span>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://www.booking.com/hotel/gr/filotimia.en-gb.html" class="booking-btn" target="_blank">
+    <i class="fa-brands fa-booking"></i> Κράτηση μέσω Booking.com
+  </a>
+</section>
+
+<!-- === MAP SECTION BELOW REVIEWS === -->
+<section class="map-box" style="padding: 60px 450px; background-color: #222020; text-align: center; ">
+  <h3 style="font-size: 2rem; margin-bottom: 30px; color: #fdf5e6;">📍 Που θα μας βρείτε</h3>
+  <div style="max-width: 1000px; margin: 0 auto; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px #00b9da1a;">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3188.751176090709!2d25.5153851!3d36.881063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14981b003c577321%3A0xed3e225574de0b36!2sFilotimia%20Apartments!5e0!3m2!1sel!2sgr!4v1712345678901"
+      width="95%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="new-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/img17.jpg" alt="Filotimia Logo" />
+        <h3>Filotimia Apartments</h3>
+      </div>
+  
+      <div class="footer-links">
+        <h4>About Us</h4>
+        <a href="about us.html">Η φιλοσοφία</a>
+        <a href="#contact">Επικοινωνία</a>
+        <a href="#">Newsletter</a>
+      </div>
+  
+      <div class="footer-links">
+        <h4>Support</h4>
+        <a href="rooms.html">Δωμάτια</a>
+        <a href="#">Όροι Χρήσης</a>
+        <a href="#">FAQs</a>
+      </div>
+  
+      <div class="footer-links">
+        <h4>Social</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>© 2025 Filotimia Schoinousa • All rights reserved</p>
+    </div>
+</footer>
+  
+
+<!-- SCROLL TO TOP BUTTON -->
+<button id="scrollToTopBtn" title="Πήγαινε στην αρχή">↑</button>
+<script>
+
+// SCROLL TO TOP BUTTON FUNCTIONALITY
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 400) {
+    scrollToTopBtn.style.display = "block";
+  } else {
+    scrollToTopBtn.style.display = "none";
+  }
+});
+
+scrollToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+// Existing scroll event code, add this:
+const schoinousaSection = document.querySelector('.schoinousa-section');
+
+window.addEventListener('scroll', revealSchoinousa);
+
+function revealSchoinousa() {
+  const triggerBottom = window.innerHeight / 5 * 4;
+  const sectionTop = schoinousaSection.getBoundingClientRect().top;
+
+  if(sectionTop < triggerBottom) {
+    schoinousaSection.classList.add('show-section');
+  } else {
+    schoinousaSection.classList.remove('show-section');
+  }
+}
+
+// Trigger the effect initially on load
+revealSchoinousa();
+
+
+const sections = document.querySelectorAll('.content-section');
+
+window.addEventListener('scroll', reveal);
+
+function reveal() {
+  const triggerBottom = window.innerHeight / 5 * 4;
+
+  sections.forEach(section => {
+    const top = section.getBoundingClientRect().top;
+    if (top < triggerBottom) section.classList.add('show-section');
+    else section.classList.remove('show-section');
+  });
+}
+
+const hero = document.getElementById("hero");
+const images = ["images/img19.jpg", "images/img21.jpg"];
+let i = 0;
+
+// Εμφανίζει την πρώτη εικόνα
+hero.style.backgroundImage = `url(${images[0]})`;
+
+
+setInterval(() => {
+  i = (i + 1) % images.length;
+  hero.style.backgroundImage = `url(${images[i]})`;
+}, 5000);
+
+// nav bar scroll
+let lastScrollTop = 0;
+const navbar = document.querySelector(".navbar");
+window.addEventListener("scroll", function() {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  navbar.style.transform = scrollTop > lastScrollTop ? "translateY(-200%)" : "translateY(0)";
+  lastScrollTop = scrollTop;
+});
+
+reveal();
+
+// VIDEO SECTION SCROLL EFFECT
+const videoSection = document.querySelector('.video-section');
+
+window.addEventListener('scroll', revealVideo);
+
+function revealVideo() {
+  const triggerBottom = window.innerHeight / 5 * 4;
+  const sectionTop = videoSection.getBoundingClientRect().top;
+
+  if(sectionTop < triggerBottom) {
+    videoSection.classList.add('show-section');
+  } else {
+    videoSection.classList.remove('show-section');
+  }
+}
+
+// Trigger on initial page load
+revealVideo();
+
+// YOUTUBE AUTOPLAY ON SCROLL
+let videoPlayed = false;
+let ytPlayer;
+
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player('promo-video');
+}
+
+function autoplayVideoOnScroll() {
+  const videoSectionTop = videoSection.getBoundingClientRect().top;
+  const triggerBottom = window.innerHeight / 5 * 4;
+
+  if (videoSectionTop < triggerBottom && !videoPlayed) {
+    videoPlayed = true;
+    ytPlayer.playVideo();
+  }
+}
+
+window.addEventListener('scroll', autoplayVideoOnScroll);
+
+
+const toggleBtn = document.getElementById("darkModeToggle");
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+});
+</script>
+<script>
+  const langBtn = document.getElementById("langToggle");
+  langBtn.addEventListener("click", () => {
+    alert("Language switch feature coming soon! 🇬🇷 / 🇬🇧");
+    // ή window.location.href = "index-en.html"; για redirect σε αγγλική σελίδα
+  });
+</script>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>

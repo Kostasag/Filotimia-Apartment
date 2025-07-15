@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connections | Filotimia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #d2dbdb;
+      color: #2b2b2b;
+      line-height: 1.6;
+    }
+
+    /* === NAVIGATION BAR === */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  position: fixed;
+  top: 30px;
+  left: 0;  
+  width: 100%;
+  z-index: 10;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: transform 0.5s ease;
+  padding-left: 30px;
+  background-color: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* === NAVBAR LINKS WITH VIBRANT ROUNDED HOVER === */
+.navbar a {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 18px;
+  overflow: hidden;
+  border-radius: 50px; /* Rounded edges */
+  transition: all 0.4s ease;
+  font-weight: 500;
+}
+
+.navbar a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #bcd4d4;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: -1;
+  border-radius: 50px;
+}
+
+.navbar a:hover::before {
+  transform: scaleX(1);
+}
+
+.navbar a:hover {
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0, 185, 218, 0.7);
+}
+
+/* Subtle outline when not hovered */
+.navbar a:not(:hover) {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* OPTIONAL: active link highlighting */
+.navbar a.active {
+  color: #00b9da;
+}
+
+/* Left and right sections */
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  transform: translateX(30px);
+}
+
+/* Logo in center (if you have one) */
+.nav-center img {
+  height: 60px;
+  width: 60px;
+  border-radius: 12px;
+  margin-top: 9px;
+}
+
+
+    .section {
+      padding: 140px 20px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .card img {
+      max-width: 160px;
+      height: auto;
+    }
+
+    .card-content {
+      flex: 1;
+    }
+
+    .card-content h4 {
+      margin: 0 0 12px;
+      font-size: 1.4rem;
+      color: #000000;
+    }
+
+    .card-content p {
+      margin: 6px 0;
+      font-size: 0.96rem;
+    }
+
+    .contact-info {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
+
+    .contact-info p {
+      margin: 8px 0;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    .new-footer {
+      background-color: #eaeaea;
+      padding: 60px 20px 30px;
+      color: #333;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 40px;
+      align-items: flex-start;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .footer-brand img {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand h3 {
+      font-size: 1.4rem;
+      margin: 0;
+      color: #333;
+    }
+
+    .footer-links h4 {
+      margin-bottom: 12px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .footer-links a {
+      display: block;
+      color: #555;
+      font-size: 0.95rem;
+      text-decoration: none;
+      margin-bottom: 6px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #00b9da;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="about us.html">About Us</a>
+      <a href="rooms.html">Rooms</a>
+    </div>
+    <div class="nav-center">
+      <img src="images/img17.jpg" alt="Logo" style="height: 72px; border-radius: 12px; width: 70px;">
+    </div>
+    <div class="nav-right">
+      <a href="connections.html" class="active">Connections</a>
+      <a href="#Booking">Booking</a>
+      <a href="contact us.html">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <section class="section">
+    <h2 class="title" style="transform: translateX(-38px); padding-top: 50px;">Δρομολόγια</h2>
+
+    <!-- Blue Star Ferries -->
+    <div class="card">
+        <img src="images/img14.jpg" alt="Blue Star Ferries Logo"
+     style="width: 160px; height: 160px; transform: translateY(5px); object-fit: cover; border-radius: 45%; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+
+        <div class="card-content">
+        <h4>Blue Star Ferries</h4>
+        <p><a href="https://www.bluestarferries.com/en-gb/" target="_blank">bluestarferries.com</a></p>
+        <p><strong>Δρομολόγια Θερινής Περιόδου:</strong></p>
+        <p><strong>Πειραιάς → Σχοινούσα:</strong>
+            &nbsp;&nbsp;Κυριακή,&nbsp;&nbsp;Τρίτη,&nbsp;&nbsp;Πέμπτη &nbsp;•&nbsp;
+            <span style="color:#007ba7; font-weight:bold;">06:45 πμ</span>
+        </p>
+        <p><strong>Σχοινούσα → Πειραιά:</strong>
+            &nbsp;&nbsp;Κυριακή,&nbsp;&nbsp;Τρίτη,&nbsp;&nbsp;Πέμπτη &nbsp;•&nbsp;
+            <span style="color:#007ba7; font-weight:bold;">20:30 μμ</span>
+        </p>
+        </div>
+    </div>
+
+     <!-- Champion Jet/ Sea Jet-->
+<div class="card">
+  <img src="images/img39.jpg" alt="Sea Jet Logo"
+       style="width: 160px; height: 160px; transform: translateY(5px); object-fit: cover; border-radius: 45%; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+
+  <div class="card-content">
+    <h4>Champion Jet / Sea Jet</h4>
+    <p><a href="https://www.seajets.com/" target="_blank">seajets.com</a></p>
+    <p><strong>Καθημερινά δρομολόγια από και προς Σχοινούσσα για την θερινή περίοδο:</strong></p>
+    
+    <p><strong>Πειραιάς → Σχοινούσα:</strong>
+      &nbsp;&nbsp;Καθημερινά&nbsp;•&nbsp;
+      <span style="color:#007ba7; font-weight:bold;">08:30 πμ</span>
+      &nbsp;&nbsp;Άφιξη&nbsp;•&nbsp;
+      <span style="color:#007ba7; font-weight:bold;">12:30 μμ</span>
+    </p>
+    
+    <p><strong>Σχοινούσα → Πειραιά:</strong>
+      &nbsp;&nbsp;Καθημερινά&nbsp;•&nbsp;
+      <span style="color:#007ba7; font-weight:bold;">12:30 μμ</span>
+      &nbsp;&nbsp;Άφιξη&nbsp;•&nbsp;
+      <span style="color:#007ba7; font-weight:bold;">17:00 μμ</span>
+    </p>
+  </div>
+</div>
+
+
+    <!-- Small Cyclades Lines -->
+    <div class="card">
+      <img src="images/img15.jpg" alt="Small Cyclades Lines Logo"
+      style="width: 160px; height: 160px; transform: translateY(-5px); object-fit: cover; border-radius: 45%; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+      <div class="card-content">
+        <h4>Small Cyclades Lines (Σκοπελίτης)</h4>
+        <p><a href="https://www.smallcycladeslines.gr/en/routes-times/" target="_blank">Δρομολόγια – Small Cyclades Line</a></p>
+        <p>Δρομολόγια μεταξύ Μικρών Κυκλάδων, Νάξου, Σχοινούσας και Αμοργού</p>
+      </div>
+    </div>
+
+    <div class="contact-info">
+        <p style="margin-bottom: 16px; font-size: 0.97rem;">
+          <strong>Υπάρχει και δυνατότητα λάντζας και ταχύπλοου από Σχοινούσα για Νάξο</strong><span style="font-style: italic;">(λιμάνι Καλαντού ή Αλικού)</span>. 
+        </p>
+      
+        <p>
+        <span style="font-size: 0.5rem; vertical-align: middle;">⬤</span>
+        <strong>Μανώλης Κυριάκος:</strong>
+        <span style="color:#007ba7; font-weight: 500;">6979618233</span> &nbsp;|&nbsp;
+        <span style="font-style: italic; font-size: 1.0rem;">Λάντζα Αλικιά</span>
+        </p>
+      
+        <div style="height: 2px;"></div>
+
+        <p>
+        <span style="font-size: 0.5rem; vertical-align: middle;">⬤</span>  
+        <strong>Χρυσός Γιάννης:</strong>
+        <span style="color:#007ba7; font-weight: 500;">6986189873</span> &nbsp;|&nbsp;
+        <span style="font-style: italic; font-size: 1.0rem;">Ταχύπλοο</span>
+        </p>
+      
+        <div style="height: 2px;"></div>
+      
+        <p>
+        <span style="font-size: 0.5rem; vertical-align: middle;">⬤</span>
+        <strong>Δημήτρης:</strong>
+        <span style="color:#007ba7; font-weight: 500;">6977310427</span> &nbsp;|&nbsp;
+        <span style="font-style: italic; font-size: 1.0rem;">Λάντζα Άνεμος</span>
+        </p>
+      </div>
+      
+    </section>
+
+  <!-- FOOTER -->
+  <footer class="new-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/img17.jpg" alt="Filotimia Logo" />
+        <h3>Filotimia Apartments</h3>
+      </div>
+
+      <div class="footer-links">
+        <h4>About Us</h4>
+        <a href="about us.html">Η φιλοσοφία</a>
+        <a href="#contact">Επικοινωνία</a>
+        <a href="#">Newsletter</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Support</h4>
+        <a href="rooms.html">Δωμάτια</a>
+        <a href="#">Όροι Χρήσης</a>
+        <a href="#">FAQs</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Social</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Filotimia Schoinousa • All rights reserved</p>
+    </div>
+  </footer>
+
+<script>
+    let lastScrollTop = 0;
+    const navbar = document.querySelector(".navbar");
+    window.addEventListener("scroll", function() {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      navbar.style.transform = scrollTop > lastScrollTop ? "translateY(-200%)" : "translateY(0)";
+      lastScrollTop = scrollTop;
+    });
+</script>
+</body>
+</html>
