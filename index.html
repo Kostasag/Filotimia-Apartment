@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Filotimia Schoinousa</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -14,6 +14,7 @@ html, body {
   font-family: 'Poppins', sans-serif;
   background-color: #fdf5e6;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 body { min-height: 100vh; }
 
@@ -63,6 +64,7 @@ body { min-height: 100vh; }
   align-items: center;
   gap: 40px;
   transform: translateX(30px); /* Μετακίνηση δεξιά */
+  flex-wrap: wrap;
 }
 
 .nav-center img {
@@ -540,6 +542,24 @@ body { min-height: 100vh; }
 }
 
 
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+  background: linear-gradient(145deg, #00b9da, #00a1c7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 185, 218, 0.4);
+  transition: all 0.3s ease;
+  display: none;
+}
+
 #scrollToTopBtn:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 20px rgba(0, 185, 218, 0.6);
@@ -785,20 +805,25 @@ body.light-mode .footer-bottom {
 /* Mobile and Tablets */
 @media (max-width: 768px) {
   
-  /* Navbar responsive */
+   /* === Navbar === */
   .navbar {
     gap: 15px;
     font-size: 0.8rem;
     top: 10px;
     flex-wrap: wrap;
   }
-  
+
+  .navbar-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .nav-center img {
     height: 45px;
     margin-bottom: 10px;
   }
 
-  /* Welcome text responsive */
+  /* === Welcome Text === */
   #welcome-text {
     top: 8%;
     width: 90%;
@@ -812,13 +837,14 @@ body.light-mode .footer-bottom {
     font-size: 1rem;
   }
 
-  /* Book box responsive */
+  /* === Booking Box === */
   #book-box {
     bottom: 20px;
     left: 50%;
     width: 90%;
     transform: translateX(-50%);
     padding: 10px;
+    flex-direction: column;
   }
 
   #book-box form {
@@ -833,7 +859,7 @@ body.light-mode .footer-bottom {
     margin-bottom: 10px;
   }
 
-  /* Schoinousa section responsive */
+  /* === Schoinousa Section === */
   .schoinousa-container {
     flex-direction: column;
     gap: 20px;
@@ -844,7 +870,15 @@ body.light-mode .footer-bottom {
     max-width: 100%;
   }
 
-  /* Content sections responsive */
+  .schoinousa-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .schoinousa-text p {
+    font-size: 1rem;
+  }
+
+  /* === Content Sections (Indoor/Outdoor) === */
   .content-section {
     flex-direction: column;
     padding: 20px 5%;
@@ -857,56 +891,136 @@ body.light-mode .footer-bottom {
     width: 100%;
   }
 
-  /* Footer responsive */
-  .footer-container {
-    flex-direction: column;
+  .content-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .content-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* === Amenities Section === */
+  .amenities-grid.three-by-two {
+    grid-template-columns: 1fr;
     gap: 30px;
   }
 
-  footer {
-    padding: 30px 10px 10px;
+  .amenity-item p {
+    font-size: 1rem;
+  }
+
+  /* === Video Section === */
+  .video-title {
+    font-size: 1.6rem;
+  }
+
+  .video-container {
+    padding-bottom: 75%;
+  }
+
+  /* === Reviews Section === */
+  .review-card {
+    min-width: 240px;
+    font-size: 0.9rem;
+  }
+
+  .review-card p {
+    font-size: 0.85rem;
+  }
+
+  /* === Map Box Section === */
+  .map-box {
+    padding: 40px 20px !important;
+  }
+
+  .map-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .map-box iframe {
+    width: 100%;
+    height: 300px;
+  }
+
+  /* === Footer Section === */
+  .new-footer {
+    padding: 40px 20px 10px;
+    text-align: center;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-brand img {
+    margin: 0 auto 10px;
+  }
+
+  .footer-links h4 {
+    margin-top: 20px;
+  }
+
+  .footer-links a {
+    font-size: 0.95rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.85rem;
+    padding-top: 10px;
   }
 }
 
-/* Larger tablets and smaller laptops */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .navbar {
-    gap: 25px;
-    top: 20px;
+/* === EXTRA SMALL SCREENS (phones < 480px) === */
+@media (max-width: 480px) {
+
+  #welcome-text h1 {
+    font-size: 1.6rem;
+  }
+
+  #welcome-text p {
+    font-size: 0.95rem;
   }
 
   #book-box {
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 10px;
+    padding: 10px;
+    gap: 8px;
   }
 
-  .schoinousa-container {
-    gap: 20px;
+  .book-now-link {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
   }
 
-  .content-section {
-    padding: 15px 7%;
-    gap: 20px;
+  .schoinousa-text h2,
+  .content-text h2,
+  .video-title {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
   }
-}
 
-/*Scrroll to top button */
-#scrollToTopBtn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 100;
-  background: linear-gradient(145deg, #00b9da, #00a1c7);
-  color: rgb(27, 25, 25);
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  font-size: 22px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 185, 218, 0.4);
-  transition: all 0.3s ease;
-  display: none;
+  .schoinousa-text p,
+  .content-text p,
+  .amenity-item p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .video-container {
+    padding-bottom: 80%;
+  }
+
+  .map-box h3 {
+    font-size: 1.3rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.8rem;
+  }
 }
 
 /*Greek/English Button */
@@ -948,6 +1062,100 @@ body.light-mode .footer-bottom {
   line-height: 1;
   display: flex;
   align-items: center;
+}
+
+ /* gallery */
+#gallery-rooms {
+  width: 100vw;
+  padding: 60px 40px;
+  background: linear-gradient(
+    to right,
+    #3e3a30ce,   /* σκούρο καφέ/γκρι στα άκρα */
+    #7a6f58c6,   /* ζεστό μπεζ-χακί στο κέντρο */
+    #3e3a30d0    /* σκούρο καφέ/γκρι στα άκρα */
+  );
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.gallery-content {
+  max-width: 1400px;  /* λίγο πιο φαρδύ container */
+  margin: 0 auto;
+}
+
+.gallery-content h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #f0e8d0;  /* ανοιχτό μπεζ για καλή αντίθεση */
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.gallery-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.gallery-img {
+  width: 250px;  /* μεγαλύτερο μέγεθος εικόνων */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.gallery-img:active {
+  transform: scale(1.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Lightbox style */
+.lightbox {
+  display: none; /* Κρυφό από την αρχή */
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+  cursor: pointer;
+}
+
+.lightbox-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+.close:hover {
+  color: #bbb;
 }
 
   </style>
@@ -992,30 +1200,49 @@ body.light-mode .footer-bottom {
 
 
 <!-- HERO SECTION (fade background) -->
-<section class="hero" id="hero">
-  <!-- Welcome Text -->
-  <div id="welcome-text">
-    <h1 style="padding-top: 70px;">Καλώς ήρθατε στη Φιλοτιμία</h1>
-    <hr />
-    <p><b>Απολαύστε την απόλυτη ηρεμία των Κυκλάδων στα πέτρινα δωμάτια μας στη Σχοινούσα.</b></p>
-  </div>
+<div id="welcome-text">
+  <h1 style="padding-top: 70px;">
+    <span class="gr">Καλώς ήρθατε στη Φιλοτιμία</span>
+    <span class="en" style="display: none;">Welcome to Filotimia</span>
+  </h1>
+  <hr />
+  <p>
+    <span class="gr"><b>Απολαύστε την απόλυτη ηρεμία των Κυκλάδων στα πέτρινα δωμάτια μας στη Σχοινούσα.</b></span>
+    <span class="en" style="display: none;"><b>Enjoy absolute Cycladic serenity in our stone-built rooms in Schoinoussa.</b></span>
+  </p>
+</div>
 
  <!-- Book Now -->
   <div id="book-box">
-    <form action="mailto:info@filotimia.gr" method="post" enctype="text/plain">
-      <input type="date" name="checkin" required />
-      <input type="date" name="checkout" required />
-      <select name="guests" required>
-        <option value="">Φιλοξενούμενοι</option>
-        <option value="1">1 Επισκέπτης</option>
-        <option value="2">2 Επισκέπτες</option>
-        <option value="3">2 Ενήλικες + 1 Παιδί</option>
-        <option value="4">3 Ενήλικες</option>
-        <option value="5">Οικογένεια (4 άτομα)</option>
-      </select>
-      <a href="https://direct-book.com/properties/filotimia?" target="_blank" rel="noopener noreferrer" class="book-now-link">ΚΡΑΤΗΣΗ ΤΩΡΑ</a>
-    </form>
-  </div>
+  <form action="mailto:info@filotimia.gr" method="post" enctype="text/plain">
+    <input type="date" name="checkin" required />
+    <input type="date" name="checkout" required />
+    <select name="guests" required>
+      <option class="gr" value="">Φιλοξενούμενοι</option>
+      <option class="en" value="" style="display: none;">Guests</option>
+
+      <option class="gr" value="1">1 Επισκέπτης</option>
+      <option class="en" value="1" style="display: none;">1 Guest</option>
+
+      <option class="gr" value="2">2 Επισκέπτες</option>
+      <option class="en" value="2" style="display: none;">2 Guests</option>
+
+      <option class="gr" value="3">2 Ενήλικες + 1 Παιδί</option>
+      <option class="en" value="3" style="display: none;">2 Adults + 1 Child</option>
+
+      <option class="gr" value="4">3 Ενήλικες</option>
+      <option class="en" value="4" style="display: none;">3 Adults</option>
+
+      <option class="gr" value="5">Οικογένεια (4 άτομα)</option>
+      <option class="en" value="5" style="display: none;">Family (4 people)</option>
+    </select>
+
+    <a href="https://direct-book.com/properties/filotimia?" target="_blank" rel="noopener noreferrer" class="book-now-link">
+      <span class="gr">ΚΡΑΤΗΣΗ ΤΩΡΑ</span>
+      <span class="en" style="display: none;">BOOK NOW</span>
+    </a>
+  </form>
+</div>
 </section>
 
 <!-- VIDEO SECTION -->
@@ -1041,26 +1268,45 @@ body.light-mode .footer-bottom {
 </div>
 
 <!-- SCHOINOUSA SECTION -->
+<!-- SCHOINOUSA SECTION -->
 <section class="schoinousa-section">
   <div class="schoinousa-container">
     <div class="schoinousa-image">
       <img src="https://webbox.imgix.net/images/emqjpecjwvcennsd/be8a8d78-59b5-4966-b190-5588afb75ccf.png" alt="Schoinousa" />
     </div>
     <div class="schoinousa-text">
-      <h2>Ανακαλύπτοντας τη Σχοινούσα: Ένας Ήσυχος Παράδεισος στις Μικρές Κυκλάδες</h2>
+      <h2>
+        <span class="gr">Ανακαλύπτοντας τη Σχοινούσα: Ένας Ήσυχος Παράδεισος στις Μικρές Κυκλάδες</span>
+        <span class="en" style="display: none;">Discovering Schoinoussa: A Quiet Paradise in the Small Cyclades</span>
+      </h2>
       <p>
-        Η Σχοινούσα είναι ένα γραφικό νησί και βρίσκεται περίπου στο κέντρο των Μικρών Κυκλάδων, 
-        νότια της Νάξου και βορειανατολικά της Ηρακλειάς. Είναι ένα μικρό νησί, με λίγους κατοίκους 
-        (200) και έκταση 8,144 τ. Χλμ. που προσφέρεται για ήσυχες διακοπές. 
+        <span class="gr">
+          Η Σχοινούσα είναι ένα γραφικό νησί και βρίσκεται περίπου στο κέντρο των Μικρών Κυκλάδων, 
+          νότια της Νάξου και βορειανατολικά της Ηρακλειάς. Είναι ένα μικρό νησί, με λίγους κατοίκους 
+          (200) και έκταση 8,144 τ. Χλμ. που προσφέρεται για ήσυχες διακοπές.
+        </span>
+        <span class="en" style="display: none;">
+          Schoinoussa is a picturesque island located roughly at the center of the Small Cyclades, 
+          south of Naxos and northeast of Iraklia. It's a small island with only around 200 residents 
+          and an area of 8.144 sq. km, ideal for peaceful holidays.
+        </span>
       </p>
       <p>
-        Η Σχοινούσα είναι το πιο άνυδρο μέρος της Ελλάδος, για λίγο δε χαρακτηρίζεται έρημος. 
-        Όμως τα διάφανα γαλαζοπράσινα νερά της, οι χρυσές παραλίες, τα άγρια τοπία και η απόκοσμη ηρεμία 
-        δημιουργούν μια μαγική ατμόσφαιρα για ξεκούραστες διακοπές.
+        <span class="gr">
+          Η Σχοινούσα είναι το πιο άνυδρο μέρος της Ελλάδος, για λίγο δε χαρακτηρίζεται έρημος. 
+          Όμως τα διάφανα γαλαζοπράσινα νερά της, οι χρυσές παραλίες, τα άγρια τοπία και η απόκοσμη ηρεμία 
+          δημιουργούν μια μαγική ατμόσφαιρα για ξεκούραστες διακοπές.
+        </span>
+        <span class="en" style="display: none;">
+          Schoinoussa is the driest place in Greece—almost considered a desert. 
+          Yet, its crystal-clear turquoise waters, golden beaches, wild landscapes, 
+          and otherworldly tranquility create a magical atmosphere for restful vacations.
+        </span>
       </p>
     </div>
   </div>
-  </section>
+</section>
+
 
   <!-- Flipped separator -->
 <div class="wave-separator svg">
@@ -1072,189 +1318,256 @@ body.light-mode .footer-bottom {
 <!-- amenities-section -->
 <section class="amenities-section">
   <div class="amenities-header">
-    <h3 class="amenities-title">Παροχές & Ανέσεις</h3>
+    <h3 class="amenities-title">
+      <span class="gr">Παροχές & Ανέσεις</span>
+      <span class="en" style="display: none;">Amenities & Comforts</span>
+    </h3>
     <div class="section-divider"></div>
   </div>
 
   <div class="amenities-grid three-by-two">
     <div class="amenity-item">
       <div class="icon-circle"><i class="fas fa-shuttle-van"></i></div>
-      <p>Δωρεάν μεταφορά από/προς το λιμάνι</p>
+      <p>
+        <span class="gr">Δωρεάν μεταφορά από/προς το λιμάνι</span>
+        <span class="en" style="display: none;">Free transfer to/from the port</span>
+      </p>
     </div>
     <div class="amenity-item">
       <div class="icon-circle"><i class="fas fa-broom"></i></div>
-      <p>Καθημερινή υπηρεσία καθαρισμού</p>
+      <p>
+        <span class="gr">Καθημερινή υπηρεσία καθαρισμού</span>
+        <span class="en" style="display: none;">Daily cleaning service</span>
+      </p>
     </div>
     <div class="amenity-item">
       <div class="icon-circle"><i class="fas fa-volume-mute"></i></div>
-      <p>Ηχομονωμένα διαμερίσματα</p>
+      <p>
+        <span class="gr">Ηχομονωμένα διαμερίσματα</span>
+        <span class="en" style="display: none;">Soundproof apartments</span>
+      </p>
     </div>
     <div class="amenity-item">
       <div class="icon-circle"><i class="fas fa-parking"></i></div>
-      <p>Δωρεάν Parking</p>
+      <p>
+        <span class="gr">Δωρεάν Parking</span>
+        <span class="en" style="display: none;">Free Parking</span>
+      </p>
     </div>
     <div class="amenity-item">
       <div class="icon-circle"><i class="fas fa-leaf"></i></div>
-      <p>Κήπος με βότανα & λουλούδια</p>
+      <p>
+        <span class="gr">Κήπος με βότανα & λουλούδια</span>
+        <span class="en" style="display: none;">Garden with herbs & flowers</span>
+      </p>
     </div>
     <div class="amenity-item">
       <div class="icon-circle"><i class="fas fa-charging-station"></i></div>
-      <p>Σταθμός φόρτισης ηλεκτρικών</p>
+      <p>
+        <span class="gr">Σταθμός φόρτισης ηλεκτρικών</span>
+        <span class="en" style="display: none;">EV charging station</span>
+      </p>
     </div>
   </div>
 </section>
   
 
-<!-- Outdoor Rooms SECTION -->
-<section class="content-section from-right">
-  <img src="images/img33.jpg" alt="Περιβάλλων Χώρος" style="
-   display: block;
-   width: 60%;
-   max-width: 600px;
-   margin: 60px auto;
-   border-radius: 16px;
-   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-   transform: perspective(800px) scale(1.2) rotateX(0deg) rotateY(0deg);
-   transition: transform 0.5s ease, box-shadow 0.5s ease;"
 
-  onmouseover="this.style.transform='perspective(800px) scale(1.28) rotateX(0deg) rotateY(0deg)';
-             this.style.boxShadow='0 35px 70px rgba(0, 0, 0, 0.45)'"
-  onmouseout="this.style.transform='perspective(800px) scale(1.22) rotateX(0deg) rotateY(0deg)';
-            this.style.boxShadow='0 22px 45px rgba(0, 0, 0, 0.33)'"
-
->
-
+<!-- Outdoor Area SECTION -->
+<section class="content-section from-left">
+  <img src="images/img33.jpg" alt="Περιβάλλων Χώρος" 
+    style="
+      display: block;
+      width: 60%;
+      max-width: 600px;
+      margin: 60px auto;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      transform: perspective(800px) scale(1.2) rotateX(0deg) rotateY(0deg);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    "
+    onmouseover="this.style.transform='perspective(800px) scale(1.28) rotateX(0deg) rotateY(0deg)';
+                 this.style.boxShadow='0 35px 70px rgba(0, 0, 0, 0.45)'"
+    onmouseout="this.style.transform='perspective(800px) scale(1.22) rotateX(0deg) rotateY(0deg)';
+                this.style.boxShadow='0 22px 45px rgba(0, 0, 0, 0.33)'"
+  >
   <div class="content-text">
     <h2>Περιβάλλων Χώρος</h2>
-    <p>
-      Ο εξωτερικός χώρος σχεδιάστηκε με βάση την αρχή της απλότητας και της φυσικότητας. Στόχος μας ήταν να δώσουμε την αίσθηση πως το περιβάλλον αποτελεί φυσική συνέχεια του τοπίου, χωρίς τίποτα περιττό.
-    </p>
-    <p>
-      Κάθε δωμάτιο έχει το όνομα ενός ελληνικού βοτάνου, χαραγμένο σε ξύλο: Βασιλικός, Αμπαρόριζα, Μέντα, Δυόσμος, Λάβδανο, Θρούμπι, Θυμάρι, Ρίγανη, Μαντζουράνα, Δεντρολίβανο, Λεβάντα, Φασκόμηλο.
-    </p>
-    <p>
-      Έξω από κάθε δωμάτιο φυτέψαμε το αντίστοιχο φυτό, ώστε τα αρώματα και τα χρώματα να συνδέονται με το όνομα και την αισθητική του χώρου. Εκτός από τα βότανα, θα δείτε και ελιές, αμπέλια, συκιές, αναρριχώμενες τριανταφυλλιές, μπουκαμβίλιες, αγιόκλημα, γιασεμί, γαρύφαλλα και πολλά ακόμα – συνολικά πάνω από 30 είδη φυτών.
-    </p>
-    <p>
-      Μπροστά από τα δωμάτια απλώνεται ένα παρτέρι μήκους περίπου 60 μέτρων, φυτεμένο με βούρλα και λουλούδια. Εκτός από αισθητική, εξυπηρετεί και πρακτικά: φιλτράρει το νερό από μπάνιο και κουζίνα για επαναχρησιμοποίηση — κάτι πολύτιμο στη Σχοινούσα.
-    </p>
-    <p>
-      Ο συνδυασμός τσιμέντου, πέτρας, ξύλου και λουλουδιών φιλοδοξεί να αποτελέσει ένα «παράθυρο» προς έναν πιο απλό, φυσικό τρόπο ζωής – μια Λιτή Πολυτέλεια.
-    </p>
+    <p>Ο εξωτερικός χώρος σχεδιάστηκε με βάση την αρχή της απλότητας και της φυσικότητας. Στόχος μας ήταν να δώσουμε την αίσθηση πως το περιβάλλον αποτελεί φυσική συνέχεια του τοπίου, χωρίς τίποτα περιττό.</p>
+    <p>Κάθε δωμάτιο έχει το όνομα ενός ελληνικού βοτάνου, χαραγμένο σε ξύλο: Βασιλικός, Αμπαρόριζα, Μέντα, Δυόσμος, Λάβδανο, Θρούμπι, Θυμάρι, Ρίγανη, Μαντζουράνα, Δεντρολίβανο, Λεβάντα, Φασκόμηλο.</p>
+    <p>Έξω από κάθε δωμάτιο φυτέψαμε το αντίστοιχο φυτό, ώστε τα αρώματα και τα χρώματα να συνδέονται με το όνομα και την αισθητική του χώρου. Εκτός από τα βότανα, θα δείτε και ελιές, αμπέλια, συκιές, αναρριχώμενες τριανταφυλλιές, μπουκαμβίλιες, αγιόκλημα, γιασεμί, γαρύφαλλα και πολλά ακόμα – συνολικά πάνω από 30 είδη φυτών.</p>
+    <p>Μπροστά από τα δωμάτια απλώνεται ένα παρτέρι μήκους περίπου 60 μέτρων, φυτεμένο με βούρλα και λουλούδια. Εκτός από αισθητική, εξυπηρετεί και πρακτικά: φιλτράρει το νερό από μπάνιο και κουζίνα για επαναχρησιμοποίηση — κάτι πολύτιμο στη Σχοινούσα.</p>
+    <p>Ο συνδυασμός τσιμέντου, πέτρας, ξύλου και λουλουδιών φιλοδοξεί να αποτελέσει ένα «παράθυρο» προς έναν πιο απλό, φυσικό τρόπο ζωής – μια Λιτή Πολυτέλεια.</p>
   </div>
 </section>
 
 <!-- Indoor Rooms SECTION -->
-<section class="content-section from-left">
-  <img src="images/img40.jpg" alt="Εσωτερικός Χώρος" style="
-   display: block;
-   width: 60%;
-   max-width: 600px;
-   margin: 60px auto;
-   border-radius: 16px;
-   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-   transform: perspective(800px) scale(1.2) rotateX(0deg) rotateY(0deg);
-   transition: transform 0.5s ease, box-shadow 0.5s ease;"
-
-  onmouseover="this.style.transform='perspective(800px) scale(1.28) rotateX(0deg) rotateY(0deg)';
-             this.style.boxShadow='0 35px 70px rgba(0, 0, 0, 0.45)'"
-  onmouseout="this.style.transform='perspective(800px) scale(1.22) rotateX(0deg) rotateY(0deg)';
-            this.style.boxShadow='0 22px 45px rgba(0, 0, 0, 0.33)'"
-
-                 >
+<section class="content-section from-right">
+  <img src="images/img40.jpg" alt="Εσωτερικός Χώρος" 
+    style="
+      display: block;
+      width: 60%;
+      max-width: 600px;
+      margin: 60px auto;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      transform: perspective(800px) scale(1.2) rotateX(0deg) rotateY(0deg);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    "
+    onmouseover="this.style.transform='perspective(800px) scale(1.28) rotateX(0deg) rotateY(0deg)';
+                 this.style.boxShadow='0 35px 70px rgba(0, 0, 0, 0.45)'"
+    onmouseout="this.style.transform='perspective(800px) scale(1.22) rotateX(0deg) rotateY(0deg)';
+                this.style.boxShadow='0 22px 45px rgba(0, 0, 0, 0.33)'"
+  >
   <div class="content-text">
     <h2>Εσωτερικός Χώρος</h2>
-    <p>
-      Τα δωμάτια σχεδιάστηκαν με συνδυασμό απλότητας και διακριτικής πολυτέλειας. Διαθέτουν υπέρδιπλα κρεβάτια με στρώματα εξαιρετικής ποιότητας.
-    </p>
-    <p>
-      Οι τοίχοι είναι πέτρινοι, με λευκό σοβά, ενώ ο φωτισμός είναι κρυφός, υπό ανάκλαση και ρυθμιζόμενος για ατμόσφαιρα.
-    </p>
-    <p>
-      Όλα τα δωμάτια περιλαμβάνουν: τηλεόραση, Wi-Fi, ψυγείο με καταψύκτη, τοστιέρα, μηχανή Nespresso, ηλεκτρικό σίδερο, κουζίνα, τραπέζι φαγητού, καρέκλες, ντουλάπα, κλιματισμό και ζεστό νερό.
-    </p>
-    <p>
-      Στην οροφή υπάρχουν δύο ανοίγματα: την ημέρα απομακρύνουν τη ζέστη, ενώ τη νύχτα διοχετεύουν δροσερό θαλασσινό αέρα – για φυσική δροσιά χωρίς μηχανικά μέσα.
-    </p>
-    <p>
-      Το ευρύχωρο μπαλκόνι διαθέτει τραπέζι, πολυθρόνες, ατομική αιώρα, ανεμπόδιστη θέα και απόλυτη ιδιωτικότητα.
-    </p>
-    <p>
-      Τα υλικά είναι φυσικά και οικολογικά: πέτρα, τσιμέντο, ξύλο, γυαλί. Το μπάνιο έχει κατασκευαστεί από Ηρακλείτη – ένα οικολογικό και ανακυκλώσιμο υλικό.
-    </p>
+    <p>Τα δωμάτια σχεδιάστηκαν με συνδυασμό απλότητας και διακριτικής πολυτέλειας. Διαθέτουν υπέρδιπλα κρεβάτια με στρώματα εξαιρετικής ποιότητας.</p>
+    <p>Οι τοίχοι είναι πέτρινοι, με λευκό σοβά, ενώ ο φωτισμός είναι κρυφός, υπό ανάκλαση και ρυθμιζόμενος για ατμόσφαιρα.</p>
+    <p>Όλα τα δωμάτια περιλαμβάνουν: τηλεόραση, Wi-Fi, ψυγείο με καταψύκτη, τοστιέρα, μηχανή Nespresso, ηλεκτρικό σίδερο, κουζίνα, τραπέζι φαγητού, καρέκλες, ντουλάπα, κλιματισμό και ζεστό νερό.</p>
+    <p>Στην οροφή υπάρχουν δύο ανοίγματα: την ημέρα απομακρύνουν τη ζέστη, ενώ τη νύχτα διοχετεύουν δροσερό θαλασσινό αέρα – για φυσική δροσιά χωρίς μηχανικά μέσα.</p>
+    <p>Το ευρύχωρο μπαλκόνι διαθέτει τραπέζι, πολυθρόνες, ατομική αιώρα, ανεμπόδιστη θέα και απόλυτη ιδιωτικότητα.</p>
+    <p>Τα υλικά είναι φυσικά και οικολογικά: πέτρα, τσιμέντο, ξύλο, γυαλί. Το μπάνιο έχει κατασκευαστεί από Ηρακλείτη – ένα οικολογικό και ανακυκλώσιμο υλικό.</p>
   </div>
 </section>
 
+<section id="gallery-rooms">
+  <div class="gallery-content">
+    <h2>Gallery</h2>
+    <div class="gallery-container">
+      <img src="images/img36.jpg" alt="gallery" class="gallery-img" />
+      <img src="images/img28.jpg" alt="gallery" class="gallery-img" />
+      <img src="images/img27.jpg" alt="gallery" class="gallery-img" />
+      <img src="images/img4.jpg" alt="gallery" class="gallery-img" />
+      <img src="images/img1.jpg" alt="gallery" class="gallery-img" />
+    </div>
+  </div>
+</section>
+
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img" alt="Gallery Image" />
+</div>
 
 
 <!-- === REVIEWS SECTION === -->
 <section class="reviews-section">
-  <h3 class="reviews-title">Κριτικές Επισκεπτών</h3>
+  <h3 class="reviews-title">
+    <span class="gr">Κριτικές Επισκεπτών</span>
+    <span class="en" style="display:none;">Guest Reviews</span>
+  </h3>
 
   <div class="reviews-marquee">
     <div class="reviews-track">
+
       <div class="review-card">
         <div class="review-score">10</div>
-        <p>"Όλα τέλεια, πολύ προσεγμένα και άνετα δωμάτια, φιλόξενοι ιδιοκτήτες, τέλεια τοποθεσία για ξεκούραση..."</p>
+        <p>
+          <span class="gr">"Όλα τέλεια, πολύ προσεγμένα και άνετα δωμάτια, φιλόξενοι ιδιοκτήτες, τέλεια τοποθεσία για ξεκούραση..."</span>
+          <span class="en" style="display:none;">"Everything was perfect, very well-maintained and comfortable rooms, hospitable owners, perfect location for relaxation..."</span>
+        </p>
         <span>– Nikos ch.</span>
       </div>
+
       <div class="review-card">
         <div class="review-score">10</div>
-        <p>"Άνεση και διακόσμηση στούντιο 👍Η πρωτοτυπία των κήπων FILOTIMIA έγκειται στην ποικιλία αρωματικών φυτών από τις μικρές Κυκλάδες👏"</p>
+        <p>
+          <span class="gr">"Άνεση και διακόσμηση στούντιο 👍Η πρωτοτυπία των κήπων FILOTIMIA έγκειται στην ποικιλία αρωματικών φυτών από τις μικρές Κυκλάδες👏"</span>
+          <span class="en" style="display:none;">"Comfort and studio decor 👍 The originality of FILOTIMIA gardens lies in the variety of aromatic plants from the Small Cyclades 👏"</span>
+        </p>
         <span>– Paula Pt.</span>
       </div>
+
       <div class="review-card">
         <div class="review-score">10</div>
-        <p>"Θέα, υγιεινή, πολυτελής εμφάνιση. Φιλικό προσωπικό, εξυπηρέτηση."</p>
+        <p>
+          <span class="gr">"Θέα, υγιεινή, πολυτελής εμφάνιση. Φιλικό προσωπικό, εξυπηρέτηση."</span>
+          <span class="en" style="display:none;">"View, cleanliness, luxurious appearance. Friendly staff, great service."</span>
+        </p>
         <span>– Marcel N.</span>
       </div>
+
       <div class="review-card">
         <div class="review-score">10</div>
-        <p>"Ένα από τα καλύτερα pet friendly καταλύματα στις Κυκλάδες, υπερπλήρως εξοπλισμένο. Πολύ βοηθητικό προσωπικό, για οτιδήποτε χρειαστήκαμε, με πληροφορίες και συμβουλές για το νησί της Σχοινούσας. Ολοκαίνουριο συγκρότημα, με καταπληκτική επιλογή υλικών μέχρι την τελευταία λεπτομέρεια και άπλετο εξωτερικό χώρο, φροντισμένο με ενδημικά φυτά και εξαιρετικό φωτισμό."</p>
+        <p>
+          <span class="gr">"Ένα από τα καλύτερα pet friendly καταλύματα στις Κυκλάδες, υπερπλήρως εξοπλισμένο. Πολύ βοηθητικό προσωπικό, για οτιδήποτε χρειαστήκαμε, με πληροφορίες και συμβουλές για το νησί της Σχοινούσας. Ολοκαίνουριο συγκρότημα, με καταπληκτική επιλογή υλικών μέχρι την τελευταία λεπτομέρεια και άπλετο εξωτερικό χώρο, φροντισμένο με ενδημικά φυτά και εξαιρετικό φωτισμό."</span>
+          <span class="en" style="display:none;">"One of the best pet friendly accommodations in the Cyclades, fully equipped. Very helpful staff for anything we needed, with information and advice about the island of Schinoussa. Brand new complex, with amazing material choices down to the last detail and plenty of outdoor space, cared for with endemic plants and excellent lighting."</span>
+        </p>
         <span>– George g.</span>
       </div>
+
       <div class="review-card">
         <div class="review-score">10</div>
-        <p>"Χωρίς αμφιβολία το πιο όμορφο κατάλυμα που έχει κρατηθεί μέσω Booking.com. Πραγματικά υπέροχο από άποψη κατασκευής, θέας, τοποθεσίας ή εσωτερικού σχεδιασμού Μας παρέλαβαν από το λιμάνι, όπου μας επέστρεψαν και για να πάρουμε το σκάφος μας. Μια απίστευτη διαμονή σε ένα πολύ όμορφο νησί"</p>
+        <p>
+          <span class="gr">"Χωρίς αμφιβολία το πιο όμορφο κατάλυμα που έχει κρατηθεί μέσω Booking.com. Πραγματικά υπέροχο από άποψη κατασκευής, θέας, τοποθεσίας ή εσωτερικού σχεδιασμού Μας παρέλαβαν από το λιμάνι, όπου μας επέστρεψαν και για να πάρουμε το σκάφος μας. Μια απίστευτη διαμονή σε ένα πολύ όμορφο νησί"</span>
+          <span class="en" style="display:none;">"Undoubtedly the most beautiful accommodation booked through Booking.com. Truly wonderful in terms of construction, view, location, and interior design. They picked us up from the port and returned us to catch our boat. An incredible stay on a very beautiful island."</span>
+        </p>
         <span>– Thomas f.</span>
       </div>
-      <!-- Duplicate for seamless loop -->
+
       <div class="review-card">
         <div class="review-score">9.9</div>
-        <p>"Τα πάντα. Απλά όλα ΤΕΛΕΙΑ. Φανταστικό και εξυπηρετικό προσωπικό, νέα κατασκευή με πολυτελή φινιρίσματα και σε μια εξαιρετικά ήσυχη περιοχή. Πολύ άνετα κρεβάτια."</p>
+        <p>
+          <span class="gr">"Τα πάντα. Απλά όλα ΤΕΛΕΙΑ. Φανταστικό και εξυπηρετικό προσωπικό, νέα κατασκευή με πολυτελή φινιρίσματα και σε μια εξαιρετικά ήσυχη περιοχή. Πολύ άνετα κρεβάτια."</span>
+          <span class="en" style="display:none;">"Everything. Simply PERFECT. Fantastic and helpful staff, new construction with luxurious finishes, and in an extremely quiet area. Very comfortable beds."</span>
+        </p>
         <span>– Siegfried i.</span>
       </div>
+
       <div class="review-card">
         <div class="review-score">10</div>
-        <p>"Πολύ όμορφα στούντιο με όλες τις ανέσεις για μια ολοκληρωμένη και άνετη διαμονή. Οι ιδιοκτήτες πολύ φιλικοί και συνάμα πολύ διακριτικοί νοιάζονται για την ποιότητα της διαμονής των φιλοξενούμενων επισκεπτών τους.Θα επιστρέψουμε με χαρά στην υπέροχη φιλοτιμία. Σας Ευχαριστούμε πολύ."</p>
+        <p>
+          <span class="gr">"Πολύ όμορφα στούντιο με όλες τις ανέσεις για μια ολοκληρωμένη και άνετη διαμονή. Οι ιδιοκτήτες πολύ φιλικοί και συνάμα πολύ διακριτικοί νοιάζονται για την ποιότητα της διαμονής των φιλοξενούμενων επισκεπτών τους.Θα επιστρέψουμε με χαρά στην υπέροχη φιλοτιμία. Σας Ευχαριστούμε πολύ."</span>
+          <span class="en" style="display:none;">"Very beautiful studios with all the comforts for a complete and comfortable stay. The owners are very friendly and at the same time discreet, caring about the quality of their guests' stay. We will gladly return to the wonderful Filotimia. Thank you very much."</span>
+        </p>
         <span>– Eυαγγελος.</span>
       </div>
+
       <div class="review-card">
         <div class="review-score">10</div>
-        <p>"Μας άρεσαν τα πάντα. Η φιλοξενία, η ησυχία και το κυκλαδίτικο στυλ. Θα επιστρέψουμε σίγουρα."</p>
+        <p>
+          <span class="gr">"Μας άρεσαν τα πάντα. Η φιλοξενία, η ησυχία και το κυκλαδίτικο στυλ. Θα επιστρέψουμε σίγουρα."</span>
+          <span class="en" style="display:none;">"We liked everything. The hospitality, the quietness, and the Cycladic style. We will definitely return."</span>
+        </p>
         <span>– Κατερίνα Μ.</span>
       </div>
+
       <div class="review-card">
         <div class="review-score">10</div>
-        <p>"Η θέα ήταν καταπληκτική"</p>
+        <p>
+          <span class="gr">"Η θέα ήταν καταπληκτική"</span>
+          <span class="en" style="display:none;">"The view was amazing"</span>
+        </p>
         <span>– ANDRONIKI.</span>
       </div>
+
       <div class="review-card">
         <div class="review-score">10</div>
-        <p>"Εξαιρετικά δωμάτια .. πεντακάθαρο .. προσωπικό άριστο .. ιδανικό για όσους επισκέπτονται τη Σχοινούσα !!! Καλή συνέχεια παιδιά !"</p>
+        <p>
+          <span class="gr">"Εξαιρετικά δωμάτια .. πεντακάθαρο .. προσωπικό άριστο .. ιδανικό για όσους επισκέπτονται τη Σχοινούσα !!! Καλή συνέχεια παιδιά !"</span>
+          <span class="en" style="display:none;">"Excellent rooms .. spotless .. excellent staff .. ideal for those visiting Schinoussa !!! Keep it up guys!"</span>
+        </p>
         <span>– Stylianos.</span>
       </div>
+
     </div>
   </div>
 
   <a href="https://www.booking.com/hotel/gr/filotimia.en-gb.html" class="booking-btn" target="_blank">
-    <i class="fa-brands fa-booking"></i> Κράτηση μέσω Booking.com
-  </a>
+  <i class="fa-brands fa-booking"></i> 
+  <span class="gr">Κράτηση μέσω Booking.com</span>
+  <span class="en" style="display:none;">Book via Booking.com</span>
+</a>
+
 </section>
 
+
 <!-- === MAP SECTION BELOW REVIEWS === -->
-<section class="map-box" style="padding: 60px 450px; background-color: #222020; text-align: center; ">
-  <h3 style="font-size: 2rem; margin-bottom: 30px; color: #fdf5e6;">📍 Που θα μας βρείτε</h3>
+<section class="map-box" style="padding: 60px 450px; background-color: #222020; text-align: center;">
+  <h3 style="font-size: 2rem; margin-bottom: 30px; color: #fdf5e6;">
+    <span class="gr">📍 Που θα μας βρείτε</span>
+    <span class="en" style="display:none;">📍 Where to find us</span>
+  </h3>
   <div style="max-width: 1000px; margin: 0 auto; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px #00b9da1a;">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3188.751176090709!2d25.5153851!3d36.881063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14981b003c577321%3A0xed3e225574de0b36!2sFilotimia%20Apartments!5e0!3m2!1sel!2sgr!4v1712345678901"
@@ -1265,43 +1578,82 @@ body.light-mode .footer-bottom {
 
 <!-- FOOTER -->
 <footer class="new-footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="images/img17.jpg" alt="Filotimia Logo" />
-        <h3>Filotimia Apartments</h3>
-      </div>
-  
-      <div class="footer-links">
-        <h4>About Us</h4>
-        <a href="about us.html">Η φιλοσοφία</a>
-        <a href="#contact">Επικοινωνία</a>
-        <a href="#">Newsletter</a>
-      </div>
-  
-      <div class="footer-links">
-        <h4>Support</h4>
-        <a href="rooms.html">Δωμάτια</a>
-        <a href="#">Όροι Χρήσης</a>
-        <a href="#">FAQs</a>
-      </div>
-  
-      <div class="footer-links">
-        <h4>Social</h4>
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-        <a href="#">YouTube</a>
-      </div>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="images/img17.jpg" alt="Filotimia Logo" />
+      <h3>Filotimia Apartments</h3>
     </div>
-  
-    <div class="footer-bottom">
-      <p>© 2025 Filotimia Schoinousa • All rights reserved</p>
+
+    <div class="footer-links">
+      <h4>
+        <span class="gr">Σχετικά & Επικοινωνία</span>
+        <span class="en" style="display:none;">About & Contact</span>
+      </h4>
+      <a href="about us.html">
+        <span class="gr">Σχετικά με εμάς</span>
+        <span class="en" style="display:none;">About Us</span>
+      </a>
+      <a href="contact us.html">
+        <span class="gr">Επικοινωνία</span>
+        <span class="en" style="display:none;">Contact</span>
+      </a>
     </div>
+
+    <div class="footer-links">
+      <h4>
+        <span class="gr">Υπηρεσίες</span>
+        <span class="en" style="display:none;">Services</span>
+      </h4>
+      <a href="rooms.html">
+        <span class="gr">Δωμάτια</span>
+        <span class="en" style="display:none;">Rooms</span>
+      </a>
+      <a href="#">
+        <span class="gr">Όροι Χρήσης</span>
+        <span class="en" style="display:none;">Terms of Use</span>
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <h4>
+        <span class="gr">Social</span>
+        <span class="en" style="display:none;">Social</span>
+      </h4>
+      <a href="#">
+        <span class="gr">Instagram</span>
+        <span class="en" style="display:none;">Instagram</span>
+      </a>
+      <a href="#">
+        <span class="gr">YouTube</span>
+        <span class="en" style="display:none;">YouTube</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>
+      <span class="gr">© 2025 Filotimia Schoinousa • Όλα τα δικαιώματα κατοχυρωμένα</span>
+      <span class="en" style="display:none;">© 2025 Filotimia Schoinousa • All rights reserved</span>
+    </p>
+  </div>
 </footer>
+
   
 
 <!-- SCROLL TO TOP BUTTON -->
 <button id="scrollToTopBtn" title="Πήγαινε στην αρχή">↑</button>
 <script>
+
+    const grBtn = document.querySelector("img[alt='Greek']");
+  const enBtn = document.querySelector("img[alt='English']");
+
+  function setLanguage(lang) {
+    document.querySelectorAll('.gr').forEach(el => el.style.display = (lang === 'gr' ? 'inline' : 'none'));
+    document.querySelectorAll('.en').forEach(el => el.style.display = (lang === 'en' ? 'inline' : 'none'));
+  }
+
+  grBtn.addEventListener('click', () => setLanguage('gr'));
+  enBtn.addEventListener('click', () => setLanguage('en'));
 
 // SCROLL TO TOP BUTTON FUNCTIONALITY
 const scrollToTopBtn = document.getElementById("scrollToTopBtn");
@@ -1430,6 +1782,23 @@ toggleBtn.addEventListener("click", () => {
     alert("Language switch feature coming soon! 🇬🇷 / 🇬🇧");
     // ή window.location.href = "index-en.html"; για redirect σε αγγλική σελίδα
   });
+
+  const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+document.querySelectorAll('.gallery-img').forEach(img => {
+  img.style.cursor = 'pointer';
+  img.addEventListener('click', () => {
+    lightbox.style.display = 'block';
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+  });
+});
+
+function closeLightbox() {
+  lightbox.style.display = 'none';
+}
+
 </script>
 
 <script src="https://www.youtube.com/iframe_api"></script>

@@ -14,13 +14,12 @@
 
     html, body {
       font-family: 'Poppins', sans-serif;
-      background-color: #aebdbd;
-      color: #333;
-      overflow-x: hidden;
+    background-color: #aebdbd;
+    color: #333;
+    overflow-x: hidden;
+     scroll-behavior: smooth;
     }
 
-    /* NAVIGATION */
-/* NAVIGATION */
 /* === NAVIGATION BAR === */
 .navbar {
   display: flex;
@@ -128,6 +127,13 @@
       border-radius: 16px;
       box-shadow: 0 12px 30px rgba(0,0,0,0.5);
       overflow: hidden;
+
+        width: 100%;
+    }
+  .room-image,
+.room-info {
+  flex: 1 1 100%;
+
     }
 
     .room-image {
@@ -234,6 +240,48 @@
       }
     }
 
+    /*Greek/English Button */
+.lang-switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.4); /* Σκούρο ημιδιαφανές */
+  border-radius: 30px;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.lang-switch img {
+  width: 26px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lang-switch img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 6px rgba(0, 185, 218, 0.4);
+}
+
+.lang-divider {
+  font-size: 20px;
+  color: #ccc;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+
     /* FOOTER */
     .new-footer {
       background-color: #fcf7ee;
@@ -292,9 +340,55 @@
       font-size: 0.9rem;
       color: #666;
     }
+
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+  .room-info h2 { font-size: 1.4rem; }
+  .room-info p,
+  .room-info ul li { font-size: 0.85rem; }
+  .room-info a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar {
+    font-size: 0.75rem;
+    gap: 12px;
+    padding-left: 10px;
+  }
+
+  .navbar-inner {
+     display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  transform: translateX(30px);
+  flex-wrap: wrap; /* 🔹 added for responsive wrapping */
+  }
+
+  .nav-center img {
+    height: 45px;
+    width: 45px;
+  }
+
+  .lightbox img {
+    max-width: 95%;
+    max-height: 80vh;
+  }
+}
+
+
   </style>
 </head>
 <body>
+
+  <div class="lang-switch">
+  <img src="images/gr-flag.png" alt="Greek" title="Ελληνικά">
+  <span class="lang-divider">|</span>
+  <img src="images/uk-flag.png" alt="English" title="English">
+</div>
+
 
   <!-- Nav Bar -->
   <div class="navbar">
@@ -361,35 +455,66 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="new-footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="images/img17.jpg" alt="Filotimia Logo" />
-        <h3>Filotimia Apartments</h3>
-      </div>
-      <div class="footer-links">
-        <h4>About Us</h4>
-        <a href="about us.html">Η φιλοσοφία</a>
-        <a href="#contact">Επικοινωνία</a>
-        <a href="#">Newsletter</a>
-      </div>
-      <div class="footer-links">
-        <h4>Support</h4>
-        <a href="rooms.html">Δωμάτια</a>
-        <a href="#">Όροι Χρήσης</a>
-        <a href="#">FAQs</a>
-      </div>
-      <div class="footer-links">
-        <h4>Social</h4>
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-        <a href="#">YouTube</a>
-      </div>
+<footer class="new-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="images/img17.jpg" alt="Filotimia Logo" />
+      <h3>Filotimia Apartments</h3>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 Filotimia Schoinousa • All rights reserved</p>
+
+    <div class="footer-links">
+      <h4>
+        <span class="gr">Σχετικά & Επικοινωνία</span>
+        <span class="en" style="display:none;">About & Contact</span>
+      </h4>
+      <a href="about us.html">
+        <span class="gr">Σχετικά με εμάς</span>
+        <span class="en" style="display:none;">About Us</span>
+      </a>
+      <a href="contact us.html">
+        <span class="gr">Επικοινωνία</span>
+        <span class="en" style="display:none;">Contact</span>
+      </a>
     </div>
-  </footer>
+
+    <div class="footer-links">
+      <h4>
+        <span class="gr">Υπηρεσίες</span>
+        <span class="en" style="display:none;">Services</span>
+      </h4>
+      <a href="rooms.html">
+        <span class="gr">Δωμάτια</span>
+        <span class="en" style="display:none;">Rooms</span>
+      </a>
+      <a href="#">
+        <span class="gr">Όροι Χρήσης</span>
+        <span class="en" style="display:none;">Terms of Use</span>
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <h4>
+        <span class="gr">Social</span>
+        <span class="en" style="display:none;">Social</span>
+      </h4>
+      <a href="#">
+        <span class="gr">Instagram</span>
+        <span class="en" style="display:none;">Instagram</span>
+      </a>
+      <a href="#">
+        <span class="gr">YouTube</span>
+        <span class="en" style="display:none;">YouTube</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>
+      <span class="gr">© 2025 Filotimia Schoinousa • Όλα τα δικαιώματα κατοχυρωμένα</span>
+      <span class="en" style="display:none;">© 2025 Filotimia Schoinousa • All rights reserved</span>
+    </p>
+  </div>
+</footer>
 
   <script>
     let lastScrollTop = 0;
