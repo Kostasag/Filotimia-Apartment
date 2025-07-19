@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us | Filotimia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f9f9f9;
+      line-height: 1.6;
+    }
+
+    /* === nav bar === */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      position: fixed;
+      top: 30px;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      transition: transform 0.5s ease;
+      background-color: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    .navbar a {
+      position: relative;
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 18px;
+      overflow: hidden;
+      border-radius: 50px;
+      transition: all 0.4s ease;
+    }
+
+    .navbar a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(0, 185, 218, 0.6), rgba(0, 185, 218, 0.2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+      z-index: -1;
+      border-radius: 50px;
+    }
+
+    .navbar a:hover::before {
+      transform: scaleX(1);
+    }
+
+    .navbar a:hover {
+      color: #fff;
+      box-shadow: 0 0 12px #00b9dab3;
+    }
+
+    .navbar a.active {
+      color: #00b9da;
+    }
+
+    .navbar a:not(:hover) {
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-center img {
+      height: 55px;
+      border-radius: 12px;
+      margin-top: 8px;
+      transform: none;
+    }
+    /* === HERO1 === */
+    header.hero1 {
+      background: url('images/img32.jpg') center/cover no-repeat;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-overlay1 {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 60px 40px;
+      text-align: center;
+      max-width: 800px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-overlay1 h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-overlay1 p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    /* === HERO2 === */
+    header.hero2 {
+      background: url('images/img18.jpg') center/cover no-repeat;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-overlay2 {
+      background-color: rgba(255, 255, 255, 0.76);
+      padding: 60px 40px;
+      text-align: center;
+      max-width: 800px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-overlay2 h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-overlay2 p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    /* === About === */
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 100px 5%;
+      background-color: #00212bf1;
+      color: white;
+      gap: 60px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .about-text {
+      flex: 1;
+      max-width: 550px; /* a bit more for text expansion */
+    }
+
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      margin-bottom: 25px;
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .about-text span {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Here's the main update */
+    .about-images {
+      flex: 1 1 280px; /* smaller flex basis so images take less space */
+      max-width: 280px; /* smaller container width */
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0; /* no gap so images touch edges exactly */
+    }
+
+    .about-images img {
+      width: 100%;
+      border-radius: 16px 16px 0 0; /* top-left and top-right radius only for better seamless edges */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      object-fit: cover;
+      display: block;
+    }
+
+    /* To fix rounding on edges so corners on grid edges keep border radius */
+    .about-images img:nth-child(1) {
+      border-radius: 16px 0 0 16px; /* top-left */
+    }
+
+    .about-images img:nth-child(2) {
+      border-radius: 0 16px 16px 0; /* top-right */
+    }
+
+    .about-images img:nth-child(3) {
+      border-radius: 0 0 0 16px; /* bottom-left */
+    }
+
+    .about-images img:nth-child(4) {
+      border-radius: 0 0 16px 0; /* bottom-right */
+    }
+
+    @media (max-width: 992px) {
+      .about-section {
+        flex-direction: column;
+      }
+
+      .about-images {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+        flex: 1 1 100%;
+        gap: 10px;
+      }
+
+      .about-images img {
+        border-radius: 16px;
+      }
+    }
+
+    /* rest of your styles unchanged */
+    /* ===== FOOTER STYLES ===== */
+    .new-footer {
+      background-color: #f0f0f0;
+      padding: 60px 20px 30px;
+      color: #333;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 40px;
+      align-items: flex-start;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .footer-brand img {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand h3 {
+      font-size: 1.4rem;
+      margin: 0;
+      color: #333;
+    }
+
+    .footer-links h4 {
+      margin-bottom: 12px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links ul li a {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .footer-links ul li a:hover {
+      color: #00b9da;
+    }
+
+    .footer-contact h4 {
+      margin-bottom: 12px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .footer-contact p {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="#">Αρχική</a>
+      <a href="#">Δωμάτια</a>
+      <a href="#">Υπηρεσίες</a>
+    </div>
+    <div class="nav-center">
+      <img src="images/logo.png" alt="Filotimia Logo" />
+    </div>
+    <div class="nav-right">
+      <a href="#">Επικοινωνία</a>
+      <a href="#">Κράτηση</a>
+    </div>
+  </nav>
+
+  <header class="hero1">
+    <div class="hero-overlay1">
+      <h1>Welcome to Filotimia</h1>
+      <p>Your ideal stone apartment in Schoinoussa awaits.</p>
+    </div>
+  </header>
+
+  <section class="about-section">
+    <div class="about-text">
+      <span>ABOUT US</span>
+      <h2>Discover the Authentic Charm of Schoinoussa</h2>
+      <p>
+        Filotimia Apartments offers cozy stone-built rooms in the heart of the Aegean Sea.
+        Enjoy serene sunsets, traditional hospitality, and nature's beauty just steps away.
+      </p>
+      <p>
+        Our apartments blend comfort with rustic charm, perfect for couples or families seeking tranquility.
+      </p>
+    </div>
+
+    <div class="about-images">
+      <img src="images/room1.jpg" alt="Room 1" />
+      <img src="images/room2.jpg" alt="Room 2" />
+      <img src="images/room3.jpg" alt="Room 3" />
+      <img src="images/room4.jpg" alt="Room 4" />
+    </div>
+  </section>
+
+  <footer class="new-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="Filotimia Logo" />
+        <h3>Filotimia Apartments</h3>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Αρχική</a></li>
+          <li><a href="#">Δωμάτια</a></li>
+          <li><a href="#">Υπηρεσίες</a></li>
+          <li><a href="#">Επικοινωνία</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>Schoinoussa, Cyclades, Greece</p>
+        <p>+30 22870 12345</p>
+        <p>info@filotimia.gr</p>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2025 Filotimia Apartments. All rights reserved.</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Filotimia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f9f9f9;
+      line-height: 1.6;
+    }
+
+/* === nav bar === */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  position: fixed;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: transform 0.5s ease;
+  /* ===== BLURR EFFECT NAV BAR yes ===== */
+  background-color: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); /* για Safari */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+    .navbar a {
+      position: relative;
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 18px;
+      overflow: hidden;
+      border-radius: 50px;
+      transition: all 0.4s ease;
+    }
+
+    .navbar a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(0, 185, 218, 0.6), rgba(0, 185, 218, 0.2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+      z-index: -1;
+      border-radius: 50px;
+    }
+
+    .navbar a:hover::before {
+      transform: scaleX(1);
+    }
+
+    .navbar a:hover {
+      color: #fff;
+      box-shadow: 0 0 12px #00b9dab3;
+    }
+
+    .navbar a.active {
+      color: #00b9da;
+    }
+
+    .navbar a:not(:hover) {
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-left, .nav-right { display: flex; gap: 20px; }
+
+    .nav-center img {
+      height: 55px;
+      border-radius: 12px;
+      margin-top: 8px; /* προσθέτει περιθώριο πάνω */
+      transform: none; /* ακύρωση του translateY */
+    }
+  /* === HERO1 === */
+    header.hero1 {
+      background: url('images/img32.jpg') center/cover no-repeat;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-overlay1 {
+      background-color: rgba(255,255,255,0.95);
+      padding: 60px 40px;
+      text-align: center;
+      max-width: 800px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+
+    .hero-overlay1 h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-overlay1 p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    /* === HERO2 === */
+    header.hero2 {
+      background: url('images/img18.jpg') center/cover no-repeat;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-overlay2 {
+      background-color: rgba(255,255,255,0.76);
+      padding: 60px 40px;
+      text-align: center;
+      max-width: 800px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+
+    .hero-overlay2 h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-overlay2 p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+     /* === About === */
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 100px 5%;
+      background-color: #00212bf1;
+      color: white;
+      gap: 60px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .about-text {
+      flex: 1.3;
+    max-width: 750px;
+    padding-right: 20px;
+    }
+
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      margin-bottom: 25px;
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .about-text span {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .about-images {
+  flex: 0.8;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+  .about-images img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  height: auto;
+}
+
+    @media (max-width: 992px) {
+      .about-section {
+        flex-direction: column;
+      }
+
+      .about-images {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== FOOTER STYLES ===== */
+.new-footer {
+  background-color: #f0f0f0;
+  padding: 60px 20px 30px;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 40px;
+  align-items: flex-start;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ccc;
+}
+
+.footer-brand img {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.footer-brand h3 {
+  font-size: 1.4rem;
+  margin: 0;
+  color: #333;
+}
+
+.footer-links h4 {
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #222;
+}
+
+.footer-links a {
+  display: block;
+  color: #555;
+  font-size: 0.95rem;
+  text-decoration: none;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #00b9da;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+    @media (max-width: 768px) {
+      .about-content h2 {
+        font-size: 2rem;
+      }
+
+      .about-text-box {
+        padding: 25px;
+        font-size: 1rem;
+      }
+
+      .navbar {
+        font-size: 0.8rem;
+        gap: 15px;
+        top: 10px;
+        flex-wrap: wrap;
+      }
+
+      .nav-center img {
+        height: 45px;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      footer {
+        padding: 30px 10px 10px;
+      }
+    }
+
+
+    /* === FULL RESPONSIVE SUPPORT === */
+@media (max-width: 768px) {
+  .hero-overlay1,
+  .hero-overlay2 {
+    padding: 30px 20px;
+    max-width: 95%;
+  }
+
+  .hero-overlay1 h1,
+  .hero-overlay2 h1 {
+    font-size: 2rem;
+  }
+
+  .hero-overlay1 p,
+  .hero-overlay2 p {
+    font-size: 1rem;
+  }
+
+  .about-section {
+    padding: 60px 20px;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .about-text {
+  flex: 1 1 85%;  /* allow text to grow to ~65% of container width */
+  max-width: none; /* remove any fixed max-width limiting it */
+}
+
+.about-images {
+  flex: 0 0 35%; /* fixed 35% width */
+  max-width: 35%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px; /* smaller gap so images can be tighter */
+}
+
+.about-images img {
+  width: 100%; /* full width of grid cell */
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  display: block;
+}
+
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    font-size: 0.8rem;
+    top: 10px;
+  }
+
+  .nav-center img {
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-overlay1 h1,
+  .hero-overlay2 h1 {
+    font-size: 1.7rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-brand h3 {
+    font-size: 1.2rem;
+  }
+
+  .footer-links h4 {
+    font-size: 1rem;
+  }
+}
+
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+  background: linear-gradient(145deg, #00b9da, #00a1c7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 185, 218, 0.4);
+  transition: all 0.3s ease;
+  display: none;
+}
+
+#scrollToTopBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 185, 218, 0.6);
+  background: linear-gradient(145deg, #00d2f7, #00a1c7);
+}
+
+  </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+<div class="navbar">
+    <div class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="about us.html" class="active">About Us</a>
+      <a href="rooms.html" >Rooms</a>
+    </div>
+    <div class="nav-center">
+      <img src="images/img17.jpg" alt="Logo" style="height: 72px; border-radius: 12px; width: 70px;">
+    </div>
+    <div class="nav-right">
+      <a href="connections.html">Connections</a>
+      <a href="index.html#booking">Booking</a>
+      <a href="contact us.html">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero1">
+    <div class="hero-overlay1">
+      <h1>About Us</h1>
+      <p>Καλώς ήρθες στα δωμάτια της Φιλοτιμίας. Ελπίζουμε η διαμονή σου να είναι ένα βάλσαμο για την πριν περίοδο και τη δημιουργία αντισωμάτων για το μετά των διακοπών. Το όνομα Φιλοτιμία βγήκε από την ανάγκη να εκφράσει το μοναδικό χαρακτηριστικό που θα επέλεγε κάποιος να εκφράσει την ελληνική ψυχή- Το φιλότιμο.</p>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="about-text">
+      <span>01 — About Filotimia</span>
+      <h2>Ένας χώρος που έχει σχεδιαστεί προσεκτικά για να σας βοηθήσει να επανασυνδεθείτε.  </h2>
+      <p style="background-color: rgba(233, 233, 233, 0.13); border-left: 4px solid #fcfcfc; padding: 16px 20px; border-radius: 10px; font-style: normal; font-weight: 500;">Δημιουργήσαμε τα δωμάτια μας με πυξίδα τη “Λιτή Πολυτέλεια” δηλαδή την παροχή όλων των ανέσεων βασισμένοι στη λογική του Μηδέν Άγαν, (ΜΗΔΕΝ ΑΓΑΝ -Τίποτε υπερβολικό-και ΓΝΩΘΙ ΣΕ ΑΥΤΟΝ ήταν τα γνωμικά που ήταν χαραγμένα στο Μαντείο των Δελφών). Κατασκευαστικά θελήσαμε να αφήσουμε το λιγότερο περιβαντολλογικό αποτύπωμα, για αυτό:</p>
+      <ul style="list-style-type: disc; padding-left: 1.5em;"><em>
+        <li>Χρησιμοποιήσαμε όσον το δυνατό φυσικά υλικά: τσιμέντο, ξύλο, γυαλί, πέτρα. Η πέτρα που χρησιμοποιήθηκε είναι από τη Σχοινούσα.</li>
+        <br>
+        <li>Το νερό από ντουζ, νιπτήρα, νεροχύτη, μπαλκόνια οδηγείται σε ξεχωριστή δεξαμενή για πότισμα.</li>
+        <br>
+        <li>Δώσαμε ιδιαίτερη σημασία στον φωτισμό. Σε όλα τα δωμάτια ο φωτισμός είναι υπό ανάκλαση και ρυθμιζόμενος. Επίσης, αξιοποιήσαμε τη θαλάσσια αύρα μέσω παραθύρων για φυσικό αερισμό.</li>
+        <br>
+        <li>Στοχεύοντας στον οικοτουρισμό, και όχι στον συνηθισμένο εμπορικό μαζικό τουρισμό, φυτέψαμε περιμετρικά αλλά και μπροστά από τα κτήρια 34 μεγάλες ελιές.Στην είσοδο φυτέψαμε αγριελιές, και στο κάτω μέρος του οικοπέδου φυτέψαμε αμπέλι με κυκλαδίτικες ποικιλίες (Ασύρτικο και Μαυροτραγανο) καθώς και Μοσχάτο. Λουλούδια για το άρωμα τους και για τα άνθη τους είναι φυτεμένα παντού. Στο πάρκινγκ υπάρχει σταθμός φόρτισης ηλεκτρικού αυτοκινήτου ώστε να ενισχυθεί η παρουσία ηλεκτρικών αυτοκινήτων στο νησί.
+        </li>
+      </em></ul>
+      <br>
+      <p style="font-style: normal; font-weight: 500;">Με θέα το Αιγαίο και το κυκλαδίτικο στυλ, στοχεύουμε σε αυθεντική, οικολογική φιλοξενία.</p>
+    </div>
+    <div class="about-images">
+        <img src="images/img34.jpg" alt="Stone rooms exterior">
+        <img src="images/img36.jpg" alt="Stone rooms exterior">
+        <img src="images/img33.jpg" alt="Stone rooms exterior">
+        <img src="images/img38.jpg" alt="Stone rooms exterior">
+
+        
+      </div>
+  </section>      
+
+  <!-- Hero Section2 -->
+  <header class="hero2">
+    <div class="hero-overlay2">
+      <p>Τέλος, θα σας υποδεχτούμε και θα σας περιποιηθούμε με χαμόγελο, προθυμία και σεβασμό, και θα σας αποχαιρετήσουμε με ευχές ώστε να αισθανθείτε σαν να μείνατε σπίτι σας.</p>
+      <br>
+    </div>
+  </header>
+
+  <!-- SCROLL TO TOP BUTTON -->
+<button id="scrollToTopBtn" title="Πήγαινε στην αρχή">↑</button>
+
+<!-- FOOTER -->
+<footer class="new-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="images/img17.jpg" alt="Filotimia Logo" />
+      <h3>Filotimia Apartments</h3>
+    </div>
+
+    <div class="footer-links">
+      <h4>About Us</h4>
+      <a href="about us.html">Η φιλοσοφία</a>
+      <a href="#contact">Επικοινωνία</a>
+      <a href="#">Newsletter</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Support</h4>
+      <a href="rooms.html">Δωμάτια</a>
+      <a href="#">Όροι Χρήσης</a>
+      <a href="#">FAQs</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Social</h4>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">YouTube</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Filotimia Schoinousa • All rights reserved</p>
+  </div>
+</footer>
+
+<script>
+
+// SCROLL TO TOP BUTTON FUNCTIONALITY
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 400) {
+    scrollToTopBtn.style.display = "block";
+  } else {
+    scrollToTopBtn.style.display = "none";
+  }
+});
+
+scrollToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+let lastScrollTop = 0;
+const navbar = document.querySelector(".navbar");
+window.addEventListener("scroll", function() {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  navbar.style.transform = scrollTop > lastScrollTop ? "translateY(-200%)" : "translateY(0)";
+  lastScrollTop = scrollTop;
+});
+</script>
+</body>
+</html>
