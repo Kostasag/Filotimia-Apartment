@@ -230,9 +230,38 @@
       font-size: 0.9rem;
       color: #666;
     }
+
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+  background: linear-gradient(145deg, #00b9da, #00a1c7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 185, 218, 0.4);
+  transition: all 0.3s ease;
+  display: none;
+}
+
+#scrollToTopBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 185, 218, 0.6);
+  background: linear-gradient(145deg, #00d2f7, #00a1c7);
+}
+
   </style>
 </head>
 <body>
+
+  <!-- SCROLL TO TOP BUTTON -->
+<button id="scrollToTopBtn" title="Πήγαινε στην αρχή">↑</button>
+
   <!-- NAVBAR -->
   <div class="navbar">
     <div class="nav-left">
@@ -346,39 +375,92 @@
     </section>
 
   <!-- FOOTER -->
-  <footer class="new-footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="images/img17.jpg" alt="Filotimia Logo" />
-        <h3>Filotimia Apartments</h3>
-      </div>
-
-      <div class="footer-links">
-        <h4>About Us</h4>
-        <a href="about us.html">Η φιλοσοφία</a>
-        <a href="#contact">Επικοινωνία</a>
-        <a href="#">Newsletter</a>
-      </div>
-
-      <div class="footer-links">
-        <h4>Support</h4>
-        <a href="rooms.html">Δωμάτια</a>
-        <a href="#">Όροι Χρήσης</a>
-        <a href="#">FAQs</a>
-      </div>
-
-      <div class="footer-links">
-        <h4>Social</h4>
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-        <a href="#">YouTube</a>
-      </div>
+<footer class="new-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="images/img17.jpg" alt="Filotimia Logo" />
+      <h3>Filotimia Apartments</h3>
     </div>
+
+    <div class="footer-links">
+      <h4>
+        <span class="gr">Σχετικά & Επικοινωνία</span>
+        <span class="en" style="display:none;">About & Contact</span>
+      </h4>
+      <a href="about us.html">
+        <span class="gr">Σχετικά με εμάς</span>
+        <span class="en" style="display:none;">About Us</span>
+      </a>
+      <a href="contact us.html">
+        <span class="gr">Επικοινωνία</span>
+        <span class="en" style="display:none;">Contact</span>
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <h4>
+        <span class="gr">Υπηρεσίες</span>
+        <span class="en" style="display:none;">Services</span>
+      </h4>
+      <a href="rooms.html">
+        <span class="gr">Δωμάτια</span>
+        <span class="en" style="display:none;">Rooms</span>
+      </a>
+      <a href="#">
+        <span class="gr">Όροι Χρήσης</span>
+        <span class="en" style="display:none;">Terms of Use</span>
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <h4>
+        <span class="gr">Social</span>
+        <span class="en" style="display:none;">Social</span>
+      </h4>
+      <a href="#">
+        <span class="gr">Instagram</span>
+        <span class="en" style="display:none;">Instagram</span>
+      </a>
+      <a href="#">
+        <span class="gr">YouTube</span>
+        <span class="en" style="display:none;">YouTube</span>
+      </a>
+    </div>
+  </div>
 
     <div class="footer-bottom">
       <p>© 2025 Filotimia Schoinousa • All rights reserved</p>
     </div>
   </footer>
+
+
+<script>
+  // SCROLL TO TOP BUTTON FUNCTIONALITY
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 400) {
+    scrollToTopBtn.style.display = "block";
+  } else {
+    scrollToTopBtn.style.display = "none";
+  }
+});
+
+scrollToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+let lastScrollTop = 0;
+const navbar = document.querySelector(".navbar");
+window.addEventListener("scroll", function() {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  navbar.style.transform = scrollTop > lastScrollTop ? "translateY(-200%)" : "translateY(0)";
+  lastScrollTop = scrollTop;
+});
+</script>
 
 <script>
     let lastScrollTop = 0;

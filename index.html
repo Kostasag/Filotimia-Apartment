@@ -134,7 +134,7 @@ body { min-height: 100vh; }
 #book-box {
   position: absolute;
   bottom: 100px;
-  left: 51%; /* corrected to exactly center it */
+  left: 50%; /* corrected to exactly center it */
   transform: translateX(-50%) translateY(50px); /* Initial Y-position slightly downwards */
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
@@ -626,12 +626,13 @@ body.light-mode .footer-bottom {
 .amenities-section {
   background-color: #3e5042;
   color: #f5f5f5;
-  padding: 80px 20px;
+  padding: 130px 150px;
   text-align: center;
 }
 
 .amenities-header {
-  margin-bottom: 60px;
+  margin-bottom: 100px;
+  margin-top: 50px;
 }
 
 .amenities-title {
@@ -1158,6 +1159,78 @@ body.light-mode .footer-bottom {
   color: #bbb;
 }
 
+ .call-button {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #2d4fa4;
+      color: white;
+      border-radius: 12px 0 0 12px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+      cursor: pointer;
+      transition: right 0.4s ease, padding 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+    }
+
+    .call-button i {
+      font-size: 28px;
+      transition: transform 0.3s ease;
+    }
+
+    .call-tooltip {
+      overflow: hidden;
+      max-width: 0;
+      opacity: 0;
+      margin-left: 0;
+      display: flex;
+      flex-direction: column;
+      white-space: nowrap;
+      transition: max-width 0.5s ease, opacity 0.4s ease, margin-left 0.4s ease;
+    }
+
+    .call-tooltip strong {
+      font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .call-tooltip span {
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: underline;
+    }
+
+    .call-button:hover {
+      padding-right: 24px;
+    }
+
+    .call-button:hover .call-tooltip {
+      max-width: 220px;
+      opacity: 1;
+      margin-left: 14px;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .call-button {
+        padding: 14px;
+      }
+
+      .call-tooltip strong {
+        font-size: 16px;
+      }
+
+      .call-tooltip span {
+        font-size: 14px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1198,6 +1271,14 @@ body.light-mode .footer-bottom {
   <img src="images/uk-flag.png" alt="English" title="English">
 </div>
 
+<!-- Call Button -->
+<a href="img41.jpg" class="call-button">
+  <i class="fas fa-headset"></i>
+  <div class="call-tooltip">
+    <strong>Call us</strong>
+    <span>+30 69 4881 3906</span>
+  </div>
+</a>
 
 <!-- HERO SECTION (fade background) -->
 <div id="welcome-text">
@@ -1438,7 +1519,7 @@ body.light-mode .footer-bottom {
       <img src="images/img28.jpg" alt="gallery" class="gallery-img" />
       <img src="images/img27.jpg" alt="gallery" class="gallery-img" />
       <img src="images/img4.jpg" alt="gallery" class="gallery-img" />
-      <img src="images/img1.jpg" alt="gallery" class="gallery-img" />
+      <img src="images/img1.jpg" alt="gallery" class="gallery-img" />   
     </div>
   </div>
 </section>

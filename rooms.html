@@ -281,6 +281,64 @@
   align-items: center;
 }
 
+  /*call  Button */
+ .call-button {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #2d4fa4;
+      color: white;
+      border-radius: 12px 0 0 12px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+      cursor: pointer;
+      transition: right 0.4s ease, padding 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+    }
+
+    .call-button i {
+      font-size: 28px;
+      transition: transform 0.3s ease;
+    }
+
+    .call-tooltip {
+      overflow: hidden;
+      max-width: 0;
+      opacity: 0;
+      margin-left: 0;
+      display: flex;
+      flex-direction: column;
+      white-space: nowrap;
+      transition: max-width 0.5s ease, opacity 0.4s ease, margin-left 0.4s ease;
+    }
+
+    .call-tooltip strong {
+      font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .call-tooltip span {
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: underline;
+    }
+
+    .call-button:hover {
+      padding-right: 24px;
+    }
+
+    .call-button:hover .call-tooltip {
+      max-width: 220px;
+      opacity: 1;
+      margin-left: 14px;
+    }
+
 
     /* FOOTER */
     .new-footer {
@@ -382,6 +440,15 @@
   </style>
 </head>
 <body>
+
+  <!-- Call Button -->
+<a href="img41.jpg" class="call-button">
+  <i class="fas fa-headset"></i>
+  <div class="call-tooltip">
+    <strong>Call us</strong>
+    <span>+30 69 4881 3906</span>
+  </div>
+</a>
 
   <div class="lang-switch">
   <img src="images/gr-flag.png" alt="Greek" title="Ελληνικά">
